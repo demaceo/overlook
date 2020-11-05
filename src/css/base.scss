@@ -1,7 +1,78 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
+*{
+  border: solid .1px
+}
 
+$primary-background: radial-gradient(circle, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 1%);
+
+html {
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
 body {
   background: $primary-background;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: baseline;
+  height: 30vh;
+  // overflow: hidden;
+  align-items: center;
+  background-color: white;
+}
+h1 {
+  align-self: center;
+  font-size: 5em;
+  font-style: italic;
+
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+  font-size: 2em;
+}
+
+section {
+  display:flex;
+  flex-direction: column;
+}
+
+article {
+  font-size: 3em
+}
+
+img {}
+
+.log-in-page{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 50vh;
+  width: 20vw;
+    font-size: 1em
+}
+
+footer {}
+
+.hidden{
+  display: none;
 }
