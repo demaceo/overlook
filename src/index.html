@@ -2,63 +2,109 @@
 <html lang="en-US">
 
 <head>
-  <title>Webpack Starter Kit</title>
+  <title>Hotel California</title>
 </head>
 
 <body>
-  <header>
-    <h1>Hotel California</h1>
-    <h2> Where <i>Class</i> meets <i>Luxury</i>
-    <img class='hero' src='./images/palmtrees.jpg'>
+  <header class="column-alignment">
+    <h1 class="hotel-title">Hotel California</h1>
+    <h2 class="hotel-title motto hidden"> <i>Where class meets luxury</i>
+      <!-- <img class='hero' src='/images/palmtrees.jpg'> -->
   </header>
-  <nav>
+  <nav class="nav-bar row-alignment hidden">
     <a href="#">Home</a>
-    <a href="#">About Us</a>
-    <a href="#">Amenities</a>
-    <a href="#">Contact Us</a>
+    <a href="#about-us">About Us</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#services">Services</a>
+    <a href="#contact-us">Contact Us</a>
   </nav>
-  <main>
-    <section class="main-section">
-      <article class="about-us">
-        About Us. Where class meets luxury. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-        <br>Aenean commodo ligula eget dolor. <br>Aenean massa.
-      </article>
-      <img src="" alt="">
-      <article class="amenities">
-        Amenities.  Choose from one of our many fully furbished and newly remodeled rooms. Our selection includes single rooms and suites (junior or residential). Each room consists of a TV with hundreds of stations, a microwave, safe (with customizable code and lock), shower/bath.
-        <br>Depening on your selection, your room may also include a low-rise waterfountain (aka bidet) in the restroom.
-        <br>Cost per night starting at $172- book now for an unforgettable experience!
-        <br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-        <br>Aenean commodo ligula eget dolor. <br>Aenean massa.
-      </article>
-      <img src="" alt="">
-      <article class="contact-us">
-        Contact Us. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-        <br> Aenean commodo ligula eget dolor.<br> Aenean massa.
-      </article>
+  <main class="hotel-california row-alignment">
+
+
+    <section class="user-login-section row-alignment">
+      <section class="user-login-block column-alignment">
+        <label class="user-input" for="user-name">User Name:</label>
+        <input type="text" id="user-name" value="">
+        <label class="user-input" for="password">Password:</label>
+        <input type="text" id="password" value="">
+        <button class="login-button" type="submit">Log In</button>
+      </section>
     </section>
-    <section class="booking-section">
-      <!-- <form class="booking-form" action="index.html" method="post"> -->
-      <article class="booking input">
-        Number of Guests:
-        <input type="text" name="" value="">
-        Requirements:
-        <input type="text" name="" value="">
-        Check-In:
-        <input type="text" name="" value="">
-        Check-Out:
-        <input type="text" name="" value="">
-        <button type="button" name="button">Check Availability</button>
-        </form>
+
+
+    <section class="main-section column-alignment hidden">
+      <!-- <section class="home-main-content"> -->
+      <section class="main-content column-alignment">
+        <section class='main-content-img-wrapper'>
+          <!-- <img class="featured-recipe-img recipe-image main-content-img" src="./images/palmtrees.jpg" alt="" id='111111'> -->
+        </section>
+        <section class="main-content-block" id="about-us">
+          <section class="main-content-title">
+            <b>About Us</b>
+          </section>
+          <p class="main-content-description">
+            Hotel California provides guests with a beautiful place to stay, travel, and work abroad indefinitely.
+            We use our in-depth local knowledge to offer a range of unique and authentic experiences.
+            From the center of the city to the breathtaking national parks, we put our heart, soul, and wanderlust into providing
+            families, travelers, and friends with a new and exciting way to explore the land we know and love.
+          </p>
+        </section>
+        <!-- </section> -->
+        <h3 class='content-title-title'>Why Hotel California?</h3>
+        <section class="main-content-block" id="amenities">
+          <section class="main-content-title">
+            <b>Amenities</b>
+          </section>
+          <p class="main-content-description">
+            <br>Choose from one of our many fully furbished and newly remodeled rooms.
+            Our selection includes single rooms, suites, junior suites, and residential suites.<br>
+            <br><u>Each boudoir includes:</u>
+            <br>• Your selection of a double, queen or king size bed with satin sheets that are sewn right before your check-in
+            <br>• Premium high-speed internet sent down your personal SpaceX satellite
+            <br>• An 80" HD TV with millions of stations from around the globe
+            <br>• A Gordon Ramsay-approved marble kitchen with cookware
+            <br>• A personal safe with customizable lock code provided by Warren Buffet
+            <br>• A diamond-encrusted shower bath that rains down purified drinkable water directly from Fiji
+            <br><br>Depening on your selection, your room may also even include a low-rise waterfountain (aka bidet) located in the restroom.
+            <br><br>Cost per night starting at <b>$172</b>. Book now for an unforgettable experience!
+          </p>
+        </section>
+        <section class="main-content-block" id="services">
+          <section class="main-content-title">
+            <b>Services</b>
+          </section>
+          <p class="main-content-description">
+            Given COVID-19, we adjusted our services so that we may still provide the best possible experience to our guests.
+            <br><br>The gym, pool, sauna, yoga studio, meditation garden, ballroom, bar, and public kitchen are still available for a limited number of guests at a time.
+            <i>Speak with the concierge at the front desk for further details and slot reservations.</i>
+            <br><br>We understand that this may be an inconvenience to our guests so, as a way to further compensate for these unprecedented times,
+            we now offer remote cooking classes and <a href="https://demaceo.github.io/intention-timer/">Guided Meditations</a> completely free of charge!
+            <br><br>Each activity is scheduled every Monday, Wednesday, and Thursday at noon and again at 5:30pm.
+            Guests can attend by either reserving a spot for our public kitchen or by simply viewing our live channel (#402 for Cooking, #503 for Meditation) at the schdeuled time.
+            View <a href="https://demaceo.github.io/whats-cookin/">What's Cookin'</a> to get the featured recipe of the day!
+          </p>
+        </section>
+        <section class="main-content-block" id="contact-us">
+          <section class="main-content-title">
+            <b>Contact Us</b>
+          </section>
+          <p class="main-content-description">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+            <br> Aenean commodo ligula eget dolor.<br> Aenean massa. </p>
+        </section>
+      </section>
     </section>
-    <section class="log-in-form hidden">
-      <article class="log-in input">
-        User Name:
-        <input type="text" name="" value="">
-        Password:
-        <input type="text" name="" value="">
-        <button type="button" name="button">Log In</button>
-      </article>
+    <section class="booking-section hidden">
+      <section class="booking-form column-alignment">
+        <h4>GET A ROOM</h4>
+        <article class="booking-input column-alignment">
+          <label for="check-in"><b><u>Check-In:</u></b></label>
+          <input type="date" id="check-in" name="trip-start" value="" min="2018-01-01" max="2025-12-31">
+          <label for="check-out"><b><u>Check-Out:</u></b></label>
+          <input type="date" id="check-out" name="trip-end" value="" min="2018-01-01" max="2025-12-31">
+        </article>
+        <button class="check-availability-button row-alignment" type="button" name="button">Check Availability</button>
+      </section>
     </section>
   </main>
   <!-- <footer>
