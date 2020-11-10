@@ -63,7 +63,7 @@ nav {
   align-content: baseline;
   font-size: 1.3em;
   position: sticky;
-  top: 0px;
+  top: 0;
   box-shadow: 0 6px 12px 0 #0000003d;
   // width: 100vw;
   z-index: 10px;
@@ -76,6 +76,7 @@ nav {
   align-self: baseline;
 }
 // ************* MAIN SECTION*****************
+
 main {
   justify-content: space-between;
   // height:100%;
@@ -258,6 +259,7 @@ input {
   border-width: medium;
 }
 // *************MANAGER VIEW SECTION*****************
+
 .manager-view {}
 
 .manager-block-info {
@@ -363,6 +365,7 @@ input {
   justify-content: space-around;
 }
 // .revenue-data {}
+
 .color-key {
   background-color: white;
   padding: 1em;
@@ -425,8 +428,27 @@ input {
 // .search-input--clicked {
 //   width: 44vw;
 // }
-// *************MANAGE BOOKING VIEW SECTION*****************
 
+.customer-history-block {
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.user {
+  min-width: 12vw;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  margin-top: 2em;
+  min-height: 13vh;
+  padding: 10px;
+  border: 1.5px solid;
+  justify-content: space-around;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+// *************MANAGE BOOKING VIEW SECTION*****************
 .hidden {
   display: none;
 }
