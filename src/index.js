@@ -30,7 +30,7 @@ let passwordInput = document.querySelector('#password');
 // let audio = new Audio('audio.m4a');
 let hotelMotto = document.querySelector('.motto');
 let navBar = document.querySelector('.nav-bar');
-let logInLink = document.querySelector('.log-in-link');
+let logInNavLink = document.querySelector('.log-in-link');
 let mainSection = document.querySelector('.main-section');
 
 let bookingSection = document.querySelector('.booking-section');
@@ -38,24 +38,34 @@ let checkInDate = document.querySelector('input[id="check-in"]');
 let checkOutDate = document.querySelector('input[id="check-out"]');
 let checkAvailabilityBttn = document.querySelector('.check-availability-button');
 
-// let managerMotto = document.querySelector('.manager-motto');
-// let managerNavBar = document.querySelector('.manager-nav-bar');
-// let managerView = document.querySelector('.manager-view');
-// let roomStatusView = document.querySelector('.room-statuses-view');
-// let roomStatusesSection = document.querySelector('.room-statuses-block');
+let managerMotto = document.querySelector('.manager-motto');
+let managerNavBar = document.querySelector('.manager-nav-bar');
+let managerView = document.querySelector('.manager-view');
+let roomStatusView = document.querySelector('.room-statuses-view');
+let roomStatusesSection = document.querySelector('.room-statuses-block');
+let hotelDataSection = document.querySelection('.hotel-data-section');
 // let customerHistoryView = document.querySelector('.customer-history-view');
 // let customerHistorySection = document.querySelector('.customer-history-block');
 // let searchUsersInput = document.querySelector('.search-input');
 
 
 // --- EVENT LISTENERS ---
-// window.addEventListener("load", displayGuestPage);
-logInLink.addEventListener('click', displayLogIn);
+
+logInNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
 checkAvailabilityBttn.addEventListener('click', handleAvailableRoomsSection);
 
 // --- FUNCTIONS ---
 
+function displayUserName(userName){
+  hotelMotto.innerText = "";
+  hotelMotel.insertAdjacentHTML('afterbegin', `
+  <i>Welcome ${userName}</i>
+  `)
+}
+
+
+//rename branch to feature/manager-functions
 
 
 function displayUserError() {
@@ -63,10 +73,11 @@ function displayUserError() {
 }
 
 function displayManagerPage() {
-  // userLoginSection.classList.add('hidden');
-  // managerMotto.classList.remove('hidden');
-  // managerNavBar.classList.remove('hidden');
-  // managerView.classList.remove('hidden');
+  userLoginSection.classList.add('hidden');
+  managerMotto.classList.remove('hidden');
+  managerNavBar.classList.remove('hidden');
+  managerView.classList.remove('hidden');
+  hotelDataSection.classList.remove('hidden');
   // bookingSection.classList.remove('hidden');
 }
 
