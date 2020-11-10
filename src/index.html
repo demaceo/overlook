@@ -18,12 +18,14 @@
     <!-- <a href="#services">Services</a> -->
     <a href="#contact-us">Contact Us</a>
     <a class="log-in-link" href="">Log In</a>
+    <a href="#" class="log-out-nav hidden">Log Out</a>
   </nav>
 
   <nav class="manager-nav-bar row-alignment hidden">
-    <a href="#room-statuses">Room Statuses</a>
-    <a href="#customer-history">Customer History</a>
-    <a href="#manage-bookings">Manage Bookings</a>
+    <a href="#" id="room-statuses-nav">Room Statuses</a>
+    <a href="#" id="customer-history-nav">Customer History</a>
+    <a href="#" id="manage-bookings-nav">Manage Bookings</a>
+        <a href="#" class="log-out-nav hidden">Log Out</a>
   </nav>
   <main class="hotel-california row-alignment">
 
@@ -40,43 +42,67 @@
     <section class="manager-view row-alignment hidden">
       <section class="manager-block-info row-alignment">
 
-        <section class="room-statuses-view" id="room-statuses">
+        <section class="room-statuses-section">
           <section class="room-statuses-block column-alignment">
             <section class="room-statuses-title">
               <b>Room Statuses</b>
             </section>
             <section class="room-statuses row-alignment">
-            <!-- insertAdjacentHTML HERE -->
-          </section>
-        </section>
-      </section>
-
-      <section class="hotel-data-section hidden">
-        <section class="hotel-data-block column-alignment">
-          <title class="data-title"> Data for Today</title>
-          <article class="hotel-data row-alignment">
-            <u>Occupancy:</u>
-            <a id="occupancy">%<!-- insertAdjacentHTML HERE --></a>
-          </article>
-          <article class="hotel-data row-alignment" >
-            <u>Total Revenue:</u>
-            <a id="revenue">$<!-- insertAdjacentHTML HERE --></a>
-          </article>
-          <section class="color-key column-alignment">
-            <section class="key-label row-alignment">
-              <a class="available" id="green"> o </a>
-              <label for="available"><b>Available</b></label>
-            </section>
-            <section class="key-label row-alignment">
-              <a class="unavailable" id="red"> o </a>
-              <label for="unavailable"><b>Unavailable</b></label>
+              <!-- insertAdjacentHTML HERE -->
             </section>
           </section>
         </section>
+
+        <section class="hotel-stats-section">
+          <section class="hotel-stats-block column-alignment">
+            <title class="data-title"> Data for Today</title>
+            <article class="hotel-stats row-alignment">
+              <u>Occupancy:</u>
+              <a id="occupancy">%
+                <!-- insertAdjacentHTML HERE --></a>
+            </article>
+            <article class="hotel-stats row-alignment">
+              <u>Total Revenue:</u>
+              <a id="revenue">$
+                <!-- insertAdjacentHTML HERE --></a>
+            </article>
+            <section class="color-key column-alignment">
+              <section class="key-label row-alignment">
+                <a class="available" id="green"> o </a>
+                <label for="available"><b>Available</b></label>
+              </section>
+              <section class="key-label row-alignment">
+                <a class="unavailable" id="red"> o </a>
+                <label for="unavailable"><b>Unavailable</b></label>
+              </section>
+            </section>
+          </section>
+        </section>
+
+        <section class="customer-history-section hidden">
+          <section class="nav-search-bar">
+            <input class="search-input" type="text" placeholder="Search Users">
+          </section>
+          <section class="customer-history-title">
+            <b>Customer History</b>
+          </section>
+          <table class="customer-history-block row-alignment">
+
+          </table>
+        </section>
+
+        <section class="manage-bookings-section hidden">
+          <section class="manage-bookings-title">
+            <b>Manage Bookings</b>
+          </section>
+          <form class="manage-bookings-form" action="index.html" method="post">
+
+          </form>
+        </section>
+
+
+
       </section>
-
-
-
     </section>
 
 
