@@ -42,22 +42,36 @@ let checkAvailabilityBttn = document.querySelector('.check-availability-button')
 let managerMotto = document.querySelector('.manager-motto');
 let managerNavBar = document.querySelector('.manager-nav-bar');
 let managerView = document.querySelector('.manager-view');
-let roomStatusView = document.querySelector('.room-statuses-view');
-let roomStatusesSection = document.querySelector('.room-statuses-block');
+
+let roomStatusesNavLink = document.querySelector('#room-statuses-nav');
+let roomStatusesSection = document.querySelector('.room-statuses-section');
+// rename blocks to containers
+let roomStatusesBlock = document.querySelector('.room-statuses-block');
 let roomStatuses = document.querySelector('.room-statuses');
-let hotelDataSection = document.querySelector('.hotel-data-section');
+
+let hotelStatsSection = document.querySelector('.hotel-stats-section');
+let hotelStatsContainer = document.querySelector('.hotel-stats-block');
 let occupancy = document.querySelector('#occupancy');
 let revenue = document.querySelector('#revenue');
-// let customerHistoryView = document.querySelector('.customer-history-view');
-// let customerHistorySection = document.querySelector('.customer-history-block');
-// let searchUsersInput = document.querySelector('.search-input');
 
+let customerHistoryNavLink = document.querySelector('#customer-history-nav');
+let customerHistorySection = document.querySelector('.customer-history-section');
+let customerHistoryBlock = document.querySelector('.customer-history-block');
+let searchUsersInput = document.querySelector('.search-input');
+
+let manageBookingsNavLink = document.querySelector('#manage-bookings-nav');
+let manageBookingsSection = document.querySelector('.manage-bookings-section');
+let manageBookingsForm = document.querySelector('.manage-bookings-form');
 
 // --- EVENT LISTENERS ---
 window.addEventListener("load", displayManagerPage);
 logInNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
 checkAvailabilityBttn.addEventListener('click', handleAvailableRoomsSection);
+
+roomStatusesNavLink.addEventListener('click', displayRoomStatuses);
+customerHistoryNavLink.addEventListener('click', displayCustomerHistory);
+manageBookingsNavLink.addEventListener('click', displayManageBookings);
 
 // --- FUNCTIONS SECTION ---
 
@@ -70,6 +84,10 @@ function displayLogIn() {
   navBar.classList.add('hidden');
   mainSection.classList.add('hidden');
   bookingSection.classList.add('hidden');
+}
+
+function toggleLogOutLink(){
+
 }
 
 function determineUserInput() {
@@ -102,22 +120,10 @@ function displayUserName(userName) {
 
 // ~*~*~ MANAGER Functions ~*~*~
 
-function displayManagerPage() {
-  userLoginSection.classList.add('hidden');
-  managerMotto.classList.remove('hidden');
-  managerNavBar.classList.remove('hidden');
-  managerView.classList.remove('hidden');
-  hotelDataSection.classList.remove('hidden');
-  clearUserLogIn();
-  hideGuestPage();
-  populateRoomData();
-  // bookingSection.classList.remove('hidden');
-}
-
 function populateRoomData() {
   roomStatuses.innerText = "";
   // let roomData = fetchData.getRoomData().then(data => data));
-      //  <a class="room-data" id="bed-count">${room.numBeds} bed(s)</a>
+  //  <a class="room-data" id="bed-count">${room.numBeds} bed(s)</a>
   fetchData.getRoomData().then(data => data.forEach(room => {
     roomStatuses.insertAdjacentHTML('beforeend', `
       <article class="room column-alignment" id="${room.number}">
@@ -130,13 +136,60 @@ function populateRoomData() {
   }));
 }
 
-function displayAvailableRooms() {
+function displayCustomerHistory() {
+  hideRoomStatuses();
+  hideManageBookings();
+  customerHistorySection.classList.remove('hidden');
 
 }
 
-function hideRoomStatusesSection() {
-  roomStatusView.classList.add('hidden');
-  hotelDataSection.classList.add('hidden');
+function hideCustomerHistory() {
+  customerHistorySection.classList.add('hidden');
+}
+
+function displayManageBookings() {
+  hideRoomStatuses();
+  hideCustomerHistory();
+  manageBookingsSection.classList.remove('hidden');
+
+}
+
+function hideManageBookings() {
+  manageBookingsSection.classList.add('hidden');
+}
+
+function displayRoomStatuses() {
+  hideManageBookings();
+  hideCustomerHistory();
+  roomStatusesSection.classList.remove('hidden');
+  roomStatusesBlock.classList.remove('hidden');
+  hotelStatsSection.classList.remove('hidden');
+  populateRoomData();
+}
+
+function hideRoomStatuses() {
+  roomStatusesSection.classList.add('hidden');
+  roomStatusesBlock.classList.add('hidden');
+  hotelStatsSection.classList.add('hidden');
+}
+
+function displayManagerPage() {
+  userLoginSection.classList.add('hidden');
+  managerMotto.classList.remove('hidden');
+  managerNavBar.classList.remove('hidden');
+  managerView.classList.remove('hidden');
+  hotelStatsSection.classList.remove('hidden');
+  clearUserLogIn();
+  hideGuestPage();
+  populateRoomData();
+  // bookingSection.classList.remove('hidden');
+}
+
+function hideManagerPage() {
+  managerMotto.classList.add('hidden');
+  managerNavBar.classList.add('hidden');
+  managerView.classList.add('hidden');
+  hotelStatsSection.classList.add('hidden');
 }
 
 // ~*~*~ GUEST Functions ~*~*~
