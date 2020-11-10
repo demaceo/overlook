@@ -72,12 +72,18 @@ function displayUserError() {
 
 }
 
+function clearUserLogIn(){
+  userNameInput.value = "";
+  passwordInput.value = "";
+}
+
 function displayManagerPage() {
   userLoginSection.classList.add('hidden');
   managerMotto.classList.remove('hidden');
   managerNavBar.classList.remove('hidden');
   managerView.classList.remove('hidden');
   hotelDataSection.classList.remove('hidden');
+  clearUserLogIn();
   // bookingSection.classList.remove('hidden');
 }
 
