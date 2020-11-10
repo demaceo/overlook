@@ -10,10 +10,11 @@ import {
   fetchData
 } from './classes/fetchData';
 
-console.log('This is the JavaScript entry file - your code begins here.');
-console.log(fetchData.getUserData())
+// console.log('This is the JavaScript entry file - your code begins here.');
+// console.log(fetchData.getUserData());
+// console.log(fetchData.getRoomData());
 // use .then to resolve the Promise
-fetchData.getUserData().then(data => console.log(data))
+// let userData = fetchData.getUserData().then(data => console.log("userData", data));
 
 // need to import your SCSS files in the JavaScript entry file (index.js)
 //for the styles to be applied to your HTML.
@@ -43,7 +44,10 @@ let managerNavBar = document.querySelector('.manager-nav-bar');
 let managerView = document.querySelector('.manager-view');
 let roomStatusView = document.querySelector('.room-statuses-view');
 let roomStatusesSection = document.querySelector('.room-statuses-block');
+let roomStatuses = document.querySelector('.room-statuses');
 let hotelDataSection = document.querySelector('.hotel-data-section');
+let occupancy = document.querySelector('#occupancy');
+let revenue = document.querySelector('#revenue');
 // let customerHistoryView = document.querySelector('.customer-history-view');
 // let customerHistorySection = document.querySelector('.customer-history-block');
 // let searchUsersInput = document.querySelector('.search-input');
@@ -55,55 +59,10 @@ logInNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
 checkAvailabilityBttn.addEventListener('click', handleAvailableRoomsSection);
 
-// --- FUNCTIONS ---
-
-function displayUserName(userName){
-  hotelMotto.innerText = "";
-  hotelMotel.insertAdjacentHTML('afterbegin', `
-  <i>Welcome ${userName}</i>
-  `)
-}
+// --- FUNCTIONS SECTION ---
 
 
-//rename branch to feature/manager-functions
-function hideGuestPage(){
-  userLoginSection.classList.add('hidden');
-  hotelMotto.classList.add('hidden');
-  navBar.classList.add('hidden');
-  mainSection.classList.add('hidden');
-  bookingSection.classList.add('hidden');
-}
-
-function displayUserError() {
-
-}
-
-function clearUserLogIn(){
-  userNameInput.value = "";
-  passwordInput.value = "";
-}
-
-function displayManagerPage() {
-  userLoginSection.classList.add('hidden');
-  managerMotto.classList.remove('hidden');
-  managerNavBar.classList.remove('hidden');
-  managerView.classList.remove('hidden');
-  hotelDataSection.classList.remove('hidden');
-  clearUserLogIn();
-  hideGuestPage();
-  // bookingSection.classList.remove('hidden');
-}
-
-
-function displayGuestPage() {
-  userLoginSection.classList.add('hidden');
-  hotelMotto.classList.remove('hidden');
-  navBar.classList.remove('hidden');
-  mainSection.classList.remove('hidden');
-  bookingSection.classList.remove('hidden');
-  // audio.play();
-}
-
+// ~*~*~ LOG-IN Functions ~*~*~
 function displayLogIn() {
   event.preventDefault();
   userLoginSection.classList.remove('hidden');
@@ -124,11 +83,80 @@ function determineUserInput() {
   }
 }
 
+function displayUserError() {
 
+}
+
+function clearUserLogIn() {
+  userNameInput.value = "";
+  passwordInput.value = "";
+}
+
+function displayUserName(userName) {
+  hotelMotto.innerText = "";
+  hotelMotel.insertAdjacentHTML('afterbegin', `
+  <i>Welcome ${userName}</i>
+  `)
+}
+
+
+// ~*~*~ MANAGER Functions ~*~*~
+
+function displayManagerPage() {
+  userLoginSection.classList.add('hidden');
+  managerMotto.classList.remove('hidden');
+  managerNavBar.classList.remove('hidden');
+  managerView.classList.remove('hidden');
+  hotelDataSection.classList.remove('hidden');
+  clearUserLogIn();
+  hideGuestPage();
+  populateRoomData();
+  // bookingSection.classList.remove('hidden');
+}
+
+function populateRoomData() {
+  roomStatuses.innerText = "";
+  // let roomData = fetchData.getRoomData().then(data => data));
+      //  <a class="room-data" id="bed-count">${room.numBeds} bed(s)</a>
+  fetchData.getRoomData().then(data => data.forEach(room => {
+    roomStatuses.insertAdjacentHTML('beforeend', `
+      <article class="room column-alignment" id="${room.number}">
+        <a class="room-data" id="room-number"><u>Room #${room.number}</u></a>
+        <a class="room-data" id="room-type"><i>${room.roomType}</i></a>
+        <a class="room-data" id="bed-size"><b>${room.numBeds}</b> ${room.bedSize}-size bed(s)</a>
+        <a class="room-data" id="room-cost">$${room.costPerNight} / night </a>
+      </article>
+      `)
+  }));
+}
 
 function displayAvailableRooms() {
 
 }
+
+function hideRoomStatusesSection() {
+  roomStatusView.classList.add('hidden');
+  hotelDataSection.classList.add('hidden');
+}
+
+// ~*~*~ GUEST Functions ~*~*~
+function displayGuestPage() {
+  userLoginSection.classList.add('hidden');
+  hotelMotto.classList.remove('hidden');
+  navBar.classList.remove('hidden');
+  mainSection.classList.remove('hidden');
+  bookingSection.classList.remove('hidden');
+  // audio.play();
+}
+
+function hideGuestPage() {
+  userLoginSection.classList.add('hidden');
+  hotelMotto.classList.add('hidden');
+  navBar.classList.add('hidden');
+  mainSection.classList.add('hidden');
+  bookingSection.classList.add('hidden');
+}
+
 
 function checkAvailableRooms() {
   console.log(checkInDate.value);

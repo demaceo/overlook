@@ -21,12 +21,11 @@
   </nav>
 
   <nav class="manager-nav-bar row-alignment hidden">
-    <a href="#room-availability">Room Availability</a>
+    <a href="#room-statuses">Room Statuses</a>
     <a href="#customer-history">Customer History</a>
     <a href="#manage-bookings">Manage Bookings</a>
   </nav>
   <main class="hotel-california row-alignment">
-
 
     <section class="user-login-section row-alignment hidden">
       <section class="user-login-block column-alignment">
@@ -41,11 +40,13 @@
     <section class="manager-view row-alignment hidden">
       <section class="manager-block-info row-alignment">
 
-        <section class="room-statuses-view" id="room-availability">
+        <section class="room-statuses-view" id="room-statuses">
           <section class="room-statuses-block column-alignment">
             <section class="room-statuses-title">
               <b>Room Statuses</b>
             </section>
+            <section class="room-statuses row-alignment">
+            <!-- insertAdjacentHTML HERE -->
           </section>
         </section>
       </section>
@@ -53,24 +54,28 @@
       <section class="hotel-data-section hidden">
         <section class="hotel-data-block column-alignment">
           <title class="data-title"> Data for Today</title>
-          <article class="hotel-data" id="occupancy">
+          <article class="hotel-data row-alignment">
             <u>Occupancy:</u>
+            <a id="occupancy">%<!-- insertAdjacentHTML HERE --></a>
           </article>
-          <article class="hotel-data" id="revenue">
+          <article class="hotel-data row-alignment" >
             <u>Total Revenue:</u>
+            <a id="revenue">$<!-- insertAdjacentHTML HERE --></a>
           </article>
           <section class="color-key column-alignment">
             <section class="key-label row-alignment">
               <a class="available" id="green"> o </a>
-              <label for="available">Available</label>
+              <label for="available"><b>Available</b></label>
             </section>
             <section class="key-label row-alignment">
               <a class="unavailable" id="red"> o </a>
-              <label for="unavailable">Unavailable</label>
+              <label for="unavailable"><b>Unavailable</b></label>
             </section>
           </section>
         </section>
       </section>
+
+
 
     </section>
 
@@ -129,7 +134,7 @@
           </section>
           <p class="main-content-description">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            <br> Aenean commodo ligula eget dolor.<br> Aenean massa. </p>
+            <br> Aenean commodo ligula eget dolor.<br> Call us at: <b>(678)999-8212</b></p>
         </section>
       </section>
     </section>
