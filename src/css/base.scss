@@ -1,78 +1,276 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-*{
-  border: solid .1px
-}
-
-$primary-background: radial-gradient(circle, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 1%);
+// * {
+//   border: solid 0.1px;
+// }
+// $primary-background: radial-gradient(circle, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 1%);
+// $palmys: url(./images/palmys.jpg);
 
 html {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   font-family: sans-serif;
 }
-body {
-  background: $primary-background;
-}
 
-header {
+.column-alignment {
   display: flex;
   flex-direction: column;
+  // justify-content: center;
+}
+
+.row-alignment {
+  display: flex;
+  flex-direction: row;
+  // justify-content: center;
+}
+
+body {
+  background-color: #D7DFE0;
+  height: 100vh;
+  width: 100vw;
+}
+// *************EDIT THIS SECTION*****************
+
+h3 {
+  align-self: center;
+  font-size: 5em;
+  color: white;
+  padding: 10px;
+  background-color: teal;
+  font-style: italic;
+}
+
+.home-main-content {
+  padding-right: 2vw;
+  width: 70vw;
+}
+
+.home-main-content > h1 {
+  font-size: 3em;
+  text-align: center;
+}
+
+.main-content {
+  overflow: hidden;
+  justify-content: space-around;
+  // margin-top: 0;
+  margin-bottom: 5vh;
+  margin-left: 2vw;
+  // padding-right: 50px;
+  height: 100%;
+  padding: 5vh;
+}
+
+.main-content-img-wrapper {
+  overflow: hidden;
+  display: flex;
+  max-width: 43vw;
+}
+
+.main-content-img {
+  height: 103%;
+}
+
+.main-content-block {
+  padding-left: 1vw;
+  border-radius: 5%;
+  min-width: min-content;
+  box-shadow: 0 6px 12px 0 #0000003d;
+  background-color: white;
+  max-width: 23vw;
+  padding: 50px;
+}
+
+.main-content-title {
+  border-radius: 6px;
+  font-size: 2.5em;
+  padding: 0 1vw;
+  font-weight: bolder;
+  // transition: background-color 0.2s ease-in, color ease-in .2s;
+}
+// .main-content--title:hover {
+//   background-color: grey;
+//   color: black;
+// }
+
+.main-content-description {
+  font-size: 1.1em;
+  // font-style: italic;
+  font-weight: 100;
+  line-height: 2em;
+  border-radius: 8px;
+  text-align: justify;
+  padding: 0.5vw 1.2vw;
+  height: inherit;
+  width: 50vw;
+  transition: background-color 0.2s ease-in, color ease-in 0.2s;
+}
+
+.main-content-description:hover {
+  background-color: orange;
+  color: teal;
+  font-weight: 300;
+  border-radius: 8px;
+}
+
+.content-title-block {
+  background-color: black;
+  color: white;
+  padding: 2vh 0;
+  margin: 0;
+  font-weight: lighter;
+}
+// *************HERO SECTION*****************
+
+header {
+  // display: flex;
+  // flex-direction: column;
   justify-content: center;
   align-content: baseline;
+  background-color: teal;
+  border-width: thick;
   height: 30vh;
-  overflow: hidden;
   align-items: center;
-  background-color: white;
+  padding: 40px;
+  // background-color: white;
 }
+
+.hotel-title {
+  background-color: white;
+  padding: 20px;
+}
+
 h1 {
   align-self: center;
   font-size: 5em;
+  padding: 10px;
+  background-color: white;
   font-style: italic;
-
 }
 
+.hero {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+}
+// ************* MAIN SECTION*****************
+
 main {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
 }
 
 nav {
-  display: flex;
-  flex-direction: row;
+  background-color: orange;
   justify-content: space-around;
-  width: 100vw;
-  font-size: 2em;
+  // width: 100vw;
+  font-size: 1em;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 6px 12px 0 #0000003d;
+  z-index: 10;
+  // height: 5em;
+  padding: 20px;
 }
-
-section {
-  display:flex;
-  flex-direction: column;
-}
+// section {
+// background-color: white;
+// }
 
 article {
-  font-size: 3em
+  padding: 30px;
+  font-size: 2em;
+}
+// img {
+//   display:
+// }
+// *************BOOKING A ROOM SECTION*****************
+
+.booking-section {
+  margin-top: 150px;
+  margin-right: 80px;
 }
 
-img {}
-
-.log-in-page{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-}
-.input {
-  display: flex;
-  flex-direction: column;
+.booking-form {
+  border-radius: 15%;
+  border: solid 10px;
+  // position: sticky;
+  // top: 100px;
+  border-color: teal;
+  background-color: white;
   justify-content: space-around;
   align-items: center;
-  height: 50vh;
-  width: 20vw;
-    font-size: 1em
+  max-height: 40vh;
+  max-width: 20vw;
+  // padding-bottom: 2em;
+  padding: 0 2em 3em;
+}
+// .booking-input {
+//   font-size: 0.7em;
+//   justify-content: space-around;
+// }
+
+h4 {
+  align-self: center;
+  font-size: 2em;
+  color: white;
+  padding: 15px;
+  background-color: red;
+  font-style: italic;
+  margin-bottom: 15px;
 }
 
-footer {}
+label {
+  display: block;
+  font: 0.5em sans-serif;
+  padding-top: 10px;
+}
 
-.hidden{
+input,
+label {
+  margin: 0.4rem 0;
+}
+
+.check-availability-button {
+  padding: 12px;
+  border-width: medium;
+}
+
+
+
+
+// *************USER LOG IN SECTION*****************
+
+.user-login-section {
+  display: flex;
+  background-color: orange;
+  flex-direction: row;
+  justify-content: center;
+  padding: 80px;
+  width: 100%;
+}
+
+.user-login-block {
+  background-color: white;
+  border: 10px solid;
+  padding: 100px 100px 40px;
+  justify-content: space-around;
+}
+
+.user-input {
+  font-size: 1em;
+  font-family: "Gill Sans", sans-serif;
+}
+
+input {
+  height: 3vh;
+}
+
+.login-button {
+  margin-left: 150px;
+  margin-top: 50px;
+  padding: 10px;
+  border-width: medium;
+}
+// footer {}
+
+.hidden {
   display: none;
 }
