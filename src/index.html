@@ -7,16 +7,19 @@
 
 <body>
   <header class="column-alignment">
+    <!-- <a class="log-in-link" onclick="displayLogIn()" href="">Sign In</a> -->
     <h1 class="hotel-title">Hotel California</h1>
-    <h2 class="hotel-title motto hidden"> <i>Where class meets luxury</i>
-      <!-- <img class='hero' src='/images/palmtrees.jpg'> -->
+    <h2 class="hotel-title motto"> <i>Where class meets luxury</i>
+      <h2 class="hotel-title manager-motto hidden"> <i>Steal from the rich</i>
+        <!-- <img class='hero' src='/images/palmtrees.jpg'> -->
   </header>
-  <nav class="nav-bar row-alignment hidden">
+  <nav class="nav-bar row-alignment">
     <a href="#">Home</a>
-    <a href="#about-us">About Us</a>
+    <!-- <a href="#about-us">About Us</a> -->
     <a href="#amenities">Amenities</a>
-    <a href="#services">Services</a>
+    <!-- <a href="#services">Services</a> -->
     <a href="#contact-us">Contact Us</a>
+    <a class="log-in-link" href="">Log In</a>
   </nav>
 
   <nav class="manager-nav-bar row-alignment hidden">
@@ -27,7 +30,7 @@
   <main class="hotel-california row-alignment">
 
 
-    <section class="user-login-section row-alignment">
+    <section class="user-login-section row-alignment hidden">
       <section class="user-login-block column-alignment">
         <label class="user-input" for="user-name">User Name:</label>
         <input type="text" id="user-name" value="">
@@ -37,7 +40,6 @@
       </section>
     </section>
 
-
     <section class="manager-view row-alignment hidden">
       <section class="manager-block-info column-alignment">
 
@@ -46,44 +48,26 @@
             <b>Room Statuses</b>
           </section>
           <section class="room-statuses-block row-alignment">
-            <article class="room column-alignment" id="">
-
-              <title class="room-number" id="">Room #`${room.number}`</title>
-              <title class="room-type" id="">`${room.roomType}`</title>
-              <br><u>Number of Beds:</u> `${room.numBeds}`
-              <br><u>Bed Size:</u> `${room.bedSize}`
-              <br><u>Cost per Night:</u> `${room.costPerNight}`
-            </article>
 
           </section>
         </section>
-
-        <section class="customer-history-view hidden" id="customer-history">
-          <section class="nav-search-bar">
-            <input class="search-input" type="text" placeholder="Search Users">
-          </section>
-          <section class="customer-history-title">
-            <b>Customer History</b>
-          </section>
-          <table class="customer-history-block row-alignment">
-
-          </table>
-        </section>
-
-        <section class="manage-bookings-view hidden" id="manage-bookings">
-          <section class="manage-bookings-title">
-            <b>Manage Bookings</b>
-          </section>
-          <form class="manage-bookings" action="index.html" method="post">
-
-          </form>
-        </section>
-
       </section>
+
+      <section class="hotel-data-section">
+        <section class="hotel-data-block">
+          <title class="data-title">Data for Today</title>
+          <article class="occupancy-data">
+            <u><b>Occupancy:</b></u> </article>
+          <article class="revenue-data">
+            <u><b>Total Revenue:</b></u>
+          </article>
+        </section>
+      </section>
+
     </section>
 
 
-    <section class="main-section column-alignment hidden">
+    <section class="main-section column-alignment">
       <section class="main-content column-alignment">
         <!-- <section class='main-content-img-wrapper'>
         </section> -->
@@ -99,8 +83,9 @@
           </p>
         </section>
         <!-- </section> -->
+        <label id="amenities"></label>
         <h3 class='content-title-title'>Why Hotel California?</h3>
-        <section class="main-content-block" id="amenities">
+        <section class="main-content-block">
           <section class="main-content-title">
             <b>Amenities</b>
           </section>
@@ -143,7 +128,7 @@
         </section>
       </section>
     </section>
-    <section class="booking-section hidden">
+    <section class="booking-section">
       <section class="booking-form column-alignment">
         <h4>GET A ROOM</h4>
         <article class="booking-input column-alignment">

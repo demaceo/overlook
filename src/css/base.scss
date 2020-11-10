@@ -28,8 +28,75 @@ body {
   height: 100vh;
   width: 100vw;
 }
-// *************EDIT THIS SECTION*****************
+// *************HERO SECTION*****************
+header {
+  // display: flex;
+  // flex-direction: column;
+  justify-content: center;
+  align-content: baseline;
+  background-color: teal;
+  border-width: thick;
+  height: 30vh;
+  align-items: center;
+  padding: 40px;
+  // background-color: white;
+}
 
+.hotel-title {
+  background-color: white;
+  padding: 20px;
+}
+
+h1 {
+  align-self: center;
+  font-size: 5em;
+  padding: 10px;
+  background-color: white;
+  font-style: italic;
+}
+
+.hero {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+}
+// ************* MAIN SECTION*****************
+main {
+  justify-content: space-between;
+}
+
+nav {
+  background-color: orange;
+  justify-content: space-around;
+  align-content: baseline;
+  // width: 100vw;
+  font-size: 1.2em;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 6px 12px 0 #0000003d;
+  z-index: 10;
+  // height: 5em;
+  padding: 20px;
+}
+// .log-in-link{
+//   align-items:center;
+//   background-color: white;
+//   width: 100px;
+//   height: 30px;
+//   padding: 10px;
+//   font-style: oblique;
+//   position: absolute;
+//   top: 10px;
+// }
+
+article {
+  padding: 30px;
+  font-size: 2em;
+}
+// img {
+//   display:
+// }
+// *************HOME PAGE SECTION*****************
 h3 {
   align-self: center;
   font-size: 5em;
@@ -119,70 +186,7 @@ h3 {
   margin: 0;
   font-weight: lighter;
 }
-// *************HERO SECTION*****************
-
-header {
-  // display: flex;
-  // flex-direction: column;
-  justify-content: center;
-  align-content: baseline;
-  background-color: teal;
-  border-width: thick;
-  height: 30vh;
-  align-items: center;
-  padding: 40px;
-  // background-color: white;
-}
-
-.hotel-title {
-  background-color: white;
-  padding: 20px;
-}
-
-h1 {
-  align-self: center;
-  font-size: 5em;
-  padding: 10px;
-  background-color: white;
-  font-style: italic;
-}
-
-.hero {
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-}
-// ************* MAIN SECTION*****************
-
-main {
-  justify-content: space-between;
-}
-
-nav {
-  background-color: orange;
-  justify-content: space-around;
-  // width: 100vw;
-  font-size: 1em;
-  position: sticky;
-  top: 0;
-  box-shadow: 0 6px 12px 0 #0000003d;
-  z-index: 10;
-  // height: 5em;
-  padding: 20px;
-}
-// section {
-// background-color: white;
-// }
-
-article {
-  padding: 30px;
-  font-size: 2em;
-}
-// img {
-//   display:
-// }
 // *************BOOKING A ROOM SECTION*****************
-
 .booking-section {
   margin-top: 150px;
   margin-right: 80px;
@@ -232,12 +236,7 @@ label {
   padding: 12px;
   border-width: medium;
 }
-
-
-
-
 // *************USER LOG IN SECTION*****************
-
 .user-login-section {
   display: flex;
   background-color: orange;
@@ -274,3 +273,33 @@ input {
 .hidden {
   display: none;
 }
+// *************MANAGER VIEW SECTION*****************
+.manager-view {}
+
+.manager-block-info {}
+
+
+// *************ROOM STATUSES VIEW SECTION*****************
+.room-statuses-title {}
+
+.room-statuses-block {}
+
+.room {}
+
+.room-number{}
+
+.room-type{}
+
+.bed-count{}
+.bed-size{}
+.room-cost{}
+
+// *************HOTEL DATA VIEW SECTION*****************
+.hotel-data-section{}
+.hotel-data-block{}
+.data-title{}
+.occupancy-data{}
+.revenue-data{}
+
+// *************CUSTOMER HISTORY VIEW SECTION*****************
+// *************BOOKING VIEW SECTION*****************
