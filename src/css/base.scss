@@ -7,8 +7,10 @@
 $ice-blue: #D7DFE0;
 
 html {
-  height: 100vh;
-  width: 100vw;
+  // height: 100vh;
+  // width: 100vw;
+  height: 100%;
+  width: 100%;
   font-family: sans-serif;
 }
 
@@ -29,19 +31,17 @@ body {
   height: 100vh;
   width: 100vw;
 }
-// *************HERO SECTION*****************
+// *************HEADER SECTION*****************
 
 header {
-  // display: flex;
-  // flex-direction: column;
   justify-content: center;
   align-content: baseline;
   background-color: teal;
-  border-width: thick;
+  // border-width: thick;
+  width: 100%;
   height: 30vh;
   align-items: center;
-  padding: 40px;
-  // background-color: white;
+  padding-bottom: 40px;
 }
 
 .hotel-title {
@@ -57,29 +57,29 @@ h1 {
   font-style: italic;
 }
 
-.hero {
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-}
-// ************* MAIN SECTION*****************
-
-main {
-  justify-content: space-between;
-}
-
 nav {
   background-color: orange;
   justify-content: space-around;
   align-content: baseline;
-  // width: 100vw;
-  font-size: 1.2em;
+  font-size: 1.3em;
   position: sticky;
-  top: 0;
+  top: 0px;
   box-shadow: 0 6px 12px 0 #0000003d;
-  z-index: 10;
-  // height: 5em;
-  padding: 20px;
+  // width: 100vw;
+  z-index: 10px;
+  height: 2em;
+  // padding: 20px;
+  padding: 20px 0;
+}
+
+.nav-links {
+  align-self: baseline;
+}
+// ************* MAIN SECTION*****************
+main {
+  justify-content: space-between;
+  // height:100%;
+  // width: 100%;
 }
 // .log-in-link{
 //   align-items:center;
@@ -130,14 +130,6 @@ h3 {
   height: 100%;
   padding: 5vh;
 }
-// .main-content-img-wrapper {
-//   overflow: hidden;
-//   display: flex;
-//   max-width: 43vw;
-// }
-// .main-content-img {
-//   height: 103%;
-// }
 
 .main-content-block {
   padding-left: 1vw;
@@ -154,16 +146,16 @@ h3 {
   font-size: 2.5em;
   padding: 0 1vw;
   font-weight: bolder;
-  // transition: background-color 0.2s ease-in, color ease-in .2s;
+  transition: background-color 0.2s ease-in, color ease-in 0.2s;
 }
-// .main-content--title:hover {
-//   background-color: grey;
-//   color: black;
-// }
+
+.main-content--title:hover {
+  background-color: grey;
+  color: black;
+}
 
 .main-content-description {
   font-size: 1.1em;
-  // font-style: italic;
   font-weight: 100;
   line-height: 2em;
   border-radius: 8px;
@@ -198,21 +190,14 @@ h3 {
 .booking-form {
   border-radius: 15%;
   border: solid 10px;
-  // position: sticky;
-  // top: 100px;
   border-color: teal;
   background-color: white;
   justify-content: space-around;
   align-items: center;
   max-height: 40vh;
   max-width: 20vw;
-  // padding-bottom: 2em;
   padding: 0 2em 3em;
 }
-// .booking-input {
-//   font-size: 0.7em;
-//   justify-content: space-around;
-// }
 
 h4 {
   align-self: center;
@@ -272,33 +257,39 @@ input {
   padding: 10px;
   border-width: medium;
 }
-// footer {}
 // *************MANAGER VIEW SECTION*****************
-
 .manager-view {}
 
 .manager-block-info {
   margin-top: 5em;
 }
-// *************ROOM STATUSES VIEW SECTION*****************
 
-.room-statuses-block {
+.manager-data {
   width: 80vw;
   height: 80vh;
   overflow: scroll;
   align-items: center;
   background-color: white;
   padding: 2vw;
-  // width:100%;
-  // height: 100%;
   border: solid 5px;
-  // border-radius: 10%;
 }
 
-.room-statuses-title {
-  // margin-top: 1em;
+.manager-data-title {
   font-size: 2em;
 }
+// *************ROOM STATUSES VIEW SECTION*****************
+// .room-statuses-block {
+//   width: 80vw;
+//   height: 80vh;
+//   overflow: scroll;
+//   align-items: center;
+//   background-color: white;
+//   padding: 2vw;
+//   border: solid 5px;
+// }
+// .room-statuses-title {
+//   font-size: 2em;
+// }
 
 .room-statuses {
   justify-content: space-around;
@@ -317,7 +308,6 @@ input {
   border: 1.5px solid;
   justify-content: space-around;
   align-items: center;
-  cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
 
@@ -355,12 +345,11 @@ input {
 }
 
 .hotel-stats-block {
-  // border: solid 1px black;
   justify-content: space-between;
   padding: 1em;
   max-width: 20vw;
   height: 40vh;
-  min-height: 35vh
+  min-height: 35vh;
 }
 
 .data-title {
@@ -373,9 +362,7 @@ input {
   background-color: white;
   justify-content: space-around;
 }
-
 // .revenue-data {}
-
 .color-key {
   background-color: white;
   padding: 1em;
@@ -393,12 +380,10 @@ input {
 
 #green {
   color: green;
-  // font-size: 1.4em;
 }
 
 #red {
   color: red;
-  // font-size: 1.4em;
 }
 // *************CUSTOMER HISTORY VIEW SECTION*****************
 
@@ -406,41 +391,41 @@ input {
   display: flex;
   align-content: baseline;
   justify-content: space-around;
-  align-self: center;
-  padding-bottom: 20px;
+  align-self: flex-start;
+  // width: 100%;
+  //padding-bottom: 10px;
 }
-
-.nav-search-input {
-  background-repeat: no-repeat;
-  background-position-x: 96%;
-  stroke-width: 1em;
-  width: 240px;
-  border-radius: 4px;
-  padding: 0.2em 0.5em;
-  background-size: 1.6em;
-  background-position-y: center;
-  transition: width 3s;
-  font-size: 1em;
-}
+// .nav-search-input {
+//   background-repeat: no-repeat;
+//   background-position-x: 96%;
+//   stroke-width: 1em;
+//   width: 240px;
+//   border-radius: 4px;
+//   padding: 0.2em 0.5em;
+//   background-size: 1.6em;
+//   background-position-y: center;
+//   transition: width 3s;
+//   font-size: 1em;
+// }
 
 .search-input {
   background-repeat: no-repeat;
-  background-position-x: 98%;
+  // background-position-x: 98%;
   stroke-width: 1em;
-  width: 240px;
+  width: 180px;
   border-radius: 4px;
-  padding: 0.5em;
+  // padding: 0.5em;
   background-size: 1.6em;
   background-position-y: center;
-  margin-top: 2vw;
-  transition: width 0.5s;
-  font-size: 1em;
+  // margin-top: 2vw;
+  top: 0;
+  // transition: width 0.5s;
+  // font-size: 1em;
 }
-
-.search-input--clicked {
-  width: 44vw;
-}
-// *************BOOKING VIEW SECTION*****************
+// .search-input--clicked {
+//   width: 44vw;
+// }
+// *************MANAGE BOOKING VIEW SECTION*****************
 
 .hidden {
   display: none;
