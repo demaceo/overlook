@@ -43,14 +43,14 @@ let managerNavBar = document.querySelector('.manager-nav-bar');
 let managerView = document.querySelector('.manager-view');
 let roomStatusView = document.querySelector('.room-statuses-view');
 let roomStatusesSection = document.querySelector('.room-statuses-block');
-let hotelDataSection = document.querySelection('.hotel-data-section');
+let hotelDataSection = document.querySelector('.hotel-data-section');
 // let customerHistoryView = document.querySelector('.customer-history-view');
 // let customerHistorySection = document.querySelector('.customer-history-block');
 // let searchUsersInput = document.querySelector('.search-input');
 
 
 // --- EVENT LISTENERS ---
-
+window.addEventListener("load", displayManagerPage);
 logInNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
 checkAvailabilityBttn.addEventListener('click', handleAvailableRoomsSection);
@@ -66,7 +66,13 @@ function displayUserName(userName){
 
 
 //rename branch to feature/manager-functions
-
+function hideGuestPage(){
+  userLoginSection.classList.add('hidden');
+  hotelMotto.classList.add('hidden');
+  navBar.classList.add('hidden');
+  mainSection.classList.add('hidden');
+  bookingSection.classList.add('hidden');
+}
 
 function displayUserError() {
 
@@ -84,8 +90,10 @@ function displayManagerPage() {
   managerView.classList.remove('hidden');
   hotelDataSection.classList.remove('hidden');
   clearUserLogIn();
+  hideGuestPage();
   // bookingSection.classList.remove('hidden');
 }
+
 
 function displayGuestPage() {
   userLoginSection.classList.add('hidden');
