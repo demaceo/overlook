@@ -39,32 +39,36 @@
     </section>
 
     <section class="manager-view row-alignment hidden">
-      <section class="manager-block-info column-alignment">
+      <section class="manager-block-info row-alignment">
 
         <section class="room-statuses-view" id="room-availability">
-          <section class="room-statuses-title">
-            <b>Room Statuses</b>
-          </section>
-          <section class="room-statuses-block row-alignment">
-
+          <section class="room-statuses-block column-alignment">
+            <section class="room-statuses-title">
+              <b>Room Statuses</b>
+            </section>
           </section>
         </section>
       </section>
 
-      <section class="hotel-data-section column-alignment hidden">
-        <section class="hotel-data-block">
-          <title class="data-title">Data for Today</title>
-          <article class="occupancy-data">
-            <u><b>Occupancy:</b></u> </article>
-          <article class="revenue-data">
-            <u><b>Total Revenue:</b></u>
+      <section class="hotel-data-section hidden">
+        <section class="hotel-data-block column-alignment">
+          <title class="data-title"> Data for Today</title>
+          <article class="hotel-data" id="occupancy">
+            <u>Occupancy:</u>
           </article>
-        </section>
-        <section class="color-key">
-          <a class="available" id="green"> o </a>
-          <label for="available">Available</label>
-          <a class="unavailable" id="red"> o </a>
-          <label for="unavailable">Unavailable</label>
+          <article class="hotel-data" id="revenue">
+            <u>Total Revenue:</u>
+          </article>
+          <section class="color-key column-alignment">
+            <section class="key-label row-alignment">
+              <a class="available" id="green"> o </a>
+              <label for="available">Available</label>
+            </section>
+            <section class="key-label row-alignment">
+              <a class="unavailable" id="red"> o </a>
+              <label for="unavailable">Unavailable</label>
+            </section>
+          </section>
         </section>
       </section>
 
