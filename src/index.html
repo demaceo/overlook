@@ -17,95 +17,19 @@
     <a href="#amenities">Amenities</a>
     <!-- <a href="#services">Services</a> -->
     <a href="#contact-us">Contact Us</a>
-    <a class="log-in-link" href="">Log In</a>
-    <a href="#" class="log-out-nav hidden">Log Out</a>
+    <a class="log-in-link" href="#">Log In</a>
+    <!-- <a href="#" class="log-out-nav hidden">Log Out</a> -->
   </nav>
 
   <nav class="manager-nav-bar row-alignment hidden">
-    <a href="#" id="room-statuses-nav">Room Statuses</a>
-    <a href="#" id="customer-history-nav">Customer History</a>
-    <a href="#" id="manage-bookings-nav">Manage Bookings</a>
-        <a href="#" class="log-out-nav hidden">Log Out</a>
+    <a href="#" class="nav-links" id="room-statuses-nav">Room Statuses</a>
+    <a href="#" class="nav-links" id="customer-history-nav">Customer History</a>
+    <a href="#" class="nav-links" id="manage-bookings-nav">Manage Bookings</a>
+    <a href="#" class="nav-links log-out-nav" id="log-out-nav">Log Out</a>
+    <a href="#" class="nav-links"><input class="search-input" type="text" placeholder="Search Users"></a>
   </nav>
+
   <main class="hotel-california row-alignment">
-
-    <section class="user-login-section row-alignment hidden">
-      <section class="user-login-block column-alignment">
-        <label class="user-input" for="user-name">User Name:</label>
-        <input type="text" id="user-name" value="">
-        <label class="user-input" for="password">Password:</label>
-        <input type="text" id="password" value="">
-        <button class="login-button" type="submit">Log In</button>
-      </section>
-    </section>
-
-    <section class="manager-view row-alignment hidden">
-      <section class="manager-block-info row-alignment">
-
-        <section class="room-statuses-section">
-          <section class="room-statuses-block column-alignment">
-            <section class="room-statuses-title">
-              <b>Room Statuses</b>
-            </section>
-            <section class="room-statuses row-alignment">
-              <!-- insertAdjacentHTML HERE -->
-            </section>
-          </section>
-        </section>
-
-        <section class="hotel-stats-section">
-          <section class="hotel-stats-block column-alignment">
-            <title class="data-title"> Data for Today</title>
-            <article class="hotel-stats row-alignment">
-              <u>Occupancy:</u>
-              <a id="occupancy">%
-                <!-- insertAdjacentHTML HERE --></a>
-            </article>
-            <article class="hotel-stats row-alignment">
-              <u>Total Revenue:</u>
-              <a id="revenue">$
-                <!-- insertAdjacentHTML HERE --></a>
-            </article>
-            <section class="color-key column-alignment">
-              <section class="key-label row-alignment">
-                <a class="available" id="green"> o </a>
-                <label for="available"><b>Available</b></label>
-              </section>
-              <section class="key-label row-alignment">
-                <a class="unavailable" id="red"> o </a>
-                <label for="unavailable"><b>Unavailable</b></label>
-              </section>
-            </section>
-          </section>
-        </section>
-
-        <section class="customer-history-section hidden">
-          <section class="nav-search-bar">
-            <input class="search-input" type="text" placeholder="Search Users">
-          </section>
-          <section class="customer-history-title">
-            <b>Customer History</b>
-          </section>
-          <table class="customer-history-block row-alignment">
-
-          </table>
-        </section>
-
-        <section class="manage-bookings-section hidden">
-          <section class="manage-bookings-title">
-            <b>Manage Bookings</b>
-          </section>
-          <form class="manage-bookings-form" action="index.html" method="post">
-
-          </form>
-        </section>
-
-
-
-      </section>
-    </section>
-
-
     <section class="main-section column-alignment">
       <section class="main-content column-alignment">
         <section class="main-content-block" id="about-us">
@@ -150,7 +74,7 @@
             <br><br>We understand that this may be an inconvenience to our guests so, as a way to further compensate for these unprecedented times,
             we now offer remote cooking classes and <a href="https://demaceo.github.io/intention-timer/">Guided Meditations</a> completely free of charge!
             <br><br>Each activity is scheduled every Monday, Wednesday, and Thursday at noon and again at 5:30pm.
-            Guests can attend by either reserving a spot for our public kitchen or by simply viewing our live channel (#402 for Cooking, #503 for Meditation) at the schdeuled time.
+            Guests can attend by either reserving a spot at our public kitchen or by simply viewing our live channel (<b>#402</b> for Cooking, <b>#503</b> for Meditation) at the schdeuled time.
             View <a href="https://demaceo.github.io/whats-cookin/">What's Cookin'</a> to get the featured recipe of the day!
           </p>
         </section>
@@ -160,7 +84,7 @@
           </section>
           <p class="main-content-description">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            <br> Aenean commodo ligula eget dolor.<br> Call us at: <b>(678)999-8212</b></p>
+            <br> Aenean commodo ligula eget dolor.<br> Call us at: <b>(678) 999-8212</b></p>
         </section>
       </section>
     </section>
@@ -175,6 +99,84 @@
           <input type="date" id="check-out" name="trip-end" value="" min="2018-01-01" max="2025-12-31">
         </article>
         <button class="check-availability-button row-alignment" type="button" name="button">Check Availability</button>
+      </section>
+    </section>
+
+
+
+    <section class="user-login-section row-alignment hidden">
+      <section class="user-login-block column-alignment">
+        <label class="user-input" for="user-name">User Name:</label>
+        <input type="text" id="user-name" value="">
+        <label class="user-input" for="password">Password:</label>
+        <input type="text" id="password" value="">
+        <button class="login-button" type="submit">Log In</button>
+      </section>
+    </section>
+
+    <section class="manager-view row-alignment hidden">
+      <section class="manager-block-info row-alignment">
+
+        <section class="room-statuses-section">
+          <section class="manager-data room-statuses-block column-alignment">
+            <section class="manager-data-title room-statuses-title">
+              <b>Room Statuses</b>
+            </section>
+            <section class="room-statuses row-alignment">
+              <!-- insertAdjacentHTML HERE -->
+            </section>
+          </section>
+        </section>
+
+        <section class="hotel-stats-section">
+          <section class="hotel-stats-block column-alignment">
+            <title class="data-title"> Data for Today</title>
+            <article class="hotel-stats row-alignment">
+              <u>Occupancy:   </u>
+              <a id="occupancy">%
+                <!-- insertAdjacentHTML HERE --></a>
+            </article>
+            <article class="hotel-stats row-alignment">
+              <u>Total Revenue:   </u>
+              <a id="revenue">$
+                <!-- insertAdjacentHTML HERE --></a>
+            </article>
+            <section class="color-key column-alignment">
+              <section class="key-label row-alignment">
+                <a class="available" id="green"> o </a>
+                <label for="available"><b>Available</b></label>
+              </section>
+              <section class="key-label row-alignment">
+                <a class="unavailable" id="red"> o </a>
+                <label for="unavailable"><b>Unavailable</b></label>
+              </section>
+            </section>
+          </section>
+        </section>
+
+        <section class="customer-history-section row-alignment hidden">
+          <section class="manager-data customer-history-block column-alignment">
+            <section class="manager-data-title customer-history-title">
+              <b>Customer History</b>
+            </section>
+            <table class="customer-history-block row-alignment">
+
+            </table>
+          </section>
+          <!-- <section class="nav-search-bar">
+            <input class="search-input" type="text" placeholder="Search Users">
+          </section> -->
+        </section>
+
+        <section class="manage-bookings-section hidden">
+          <section class="maanger-data-title manage-bookings-title">
+            <b>Manage Bookings</b>
+          </section>
+          <form class="manage-bookings-form" action="index.html" method="post">
+            <!-- insertAdjacentHTML HERE -->
+          </form>
+        </section>
+
       </section>
     </section>
 
