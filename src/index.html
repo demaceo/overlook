@@ -18,6 +18,12 @@
     <a href="#services">Services</a>
     <a href="#contact-us">Contact Us</a>
   </nav>
+
+  <nav class="manager-nav-bar row-alignment hidden">
+    <a href="#room-availability">Room Availability</a>
+    <a href="#customer-history">Customer History</a>
+    <a href="#manage-bookings">Manage Bookings</a>
+  </nav>
   <main class="hotel-california row-alignment">
 
 
@@ -32,12 +38,55 @@
     </section>
 
 
-    <section class="main-section column-alignment hidden">
-      <!-- <section class="home-main-content"> -->
-      <section class="main-content column-alignment">
-        <section class='main-content-img-wrapper'>
-          <!-- <img class="featured-recipe-img recipe-image main-content-img" src="./images/palmtrees.jpg" alt="" id='111111'> -->
+    <section class="manager-view row-alignment hidden">
+      <section class="manager-block-info column-alignment">
+
+        <section class="room-statuses-view" id="room-availability">
+          <section class="room-statuses-title">
+            <b>Room Statuses</b>
+          </section>
+          <section class="room-statuses-block row-alignment">
+            <article class="room column-alignment" id="">
+
+              <title class="room-number" id="">Room #`${room.number}`</title>
+              <title class="room-type" id="">`${room.roomType}`</title>
+              <br><u>Number of Beds:</u> `${room.numBeds}`
+              <br><u>Bed Size:</u> `${room.bedSize}`
+              <br><u>Cost per Night:</u> `${room.costPerNight}`
+            </article>
+
+          </section>
         </section>
+
+        <section class="customer-history-view hidden" id="customer-history">
+          <section class="nav-search-bar">
+            <input class="search-input" type="text" placeholder="Search Users">
+          </section>
+          <section class="customer-history-title">
+            <b>Customer History</b>
+          </section>
+          <table class="customer-history-block row-alignment">
+
+          </table>
+        </section>
+
+        <section class="manage-bookings-view hidden" id="manage-bookings">
+          <section class="manage-bookings-title">
+            <b>Manage Bookings</b>
+          </section>
+          <form class="manage-bookings" action="index.html" method="post">
+
+          </form>
+        </section>
+
+      </section>
+    </section>
+
+
+    <section class="main-section column-alignment hidden">
+      <section class="main-content column-alignment">
+        <!-- <section class='main-content-img-wrapper'>
+        </section> -->
         <section class="main-content-block" id="about-us">
           <section class="main-content-title">
             <b>About Us</b>
