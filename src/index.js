@@ -32,6 +32,7 @@ let passwordInput = document.querySelector('#password');
 let hotelMotto = document.querySelector('.motto');
 let navBar = document.querySelector('.nav-bar');
 let logInNavLink = document.querySelector('.log-in-link');
+let logOutNavLink = document.querySelector('.log-out-nav')
 let mainSection = document.querySelector('.main-section');
 
 let bookingSection = document.querySelector('.booking-section');
@@ -64,8 +65,9 @@ let manageBookingsSection = document.querySelector('.manage-bookings-section');
 let manageBookingsForm = document.querySelector('.manage-bookings-form');
 
 // --- EVENT LISTENERS ---
-window.addEventListener("load", displayManagerPage);
+//window.addEventListener("load", displayManagerPage);
 logInNavLink.addEventListener('click', displayLogIn);
+logOutNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
 checkAvailabilityBttn.addEventListener('click', handleAvailableRoomsSection);
 
@@ -79,6 +81,8 @@ manageBookingsNavLink.addEventListener('click', displayManageBookings);
 // ~*~*~ LOG-IN Functions ~*~*~
 function displayLogIn() {
   event.preventDefault();
+  hideGuestPage();
+  hideManagerPage();
   userLoginSection.classList.remove('hidden');
   hotelMotto.classList.add('hidden');
   navBar.classList.add('hidden');
