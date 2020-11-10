@@ -4,6 +4,7 @@
 // }
 // $primary-background: radial-gradient(circle, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 1%);
 // $palmys: url(./images/palmys.jpg);
+$ice-blue: #D7DFE0;
 
 html {
   height: 100vh;
@@ -24,7 +25,7 @@ html {
 }
 
 body {
-  background-color: #D7DFE0;
+  background-color: $ice-blue;
   height: 100vh;
   width: 100vw;
 }
@@ -129,16 +130,14 @@ h3 {
   height: 100%;
   padding: 5vh;
 }
-
-.main-content-img-wrapper {
-  overflow: hidden;
-  display: flex;
-  max-width: 43vw;
-}
-
-.main-content-img {
-  height: 103%;
-}
+// .main-content-img-wrapper {
+//   overflow: hidden;
+//   display: flex;
+//   max-width: 43vw;
+// }
+// .main-content-img {
+//   height: 103%;
+// }
 
 .main-content-block {
   padding-left: 1vw;
@@ -274,7 +273,6 @@ input {
   border-width: medium;
 }
 // footer {}
-
 // *************MANAGER VIEW SECTION*****************
 
 .manager-view {}
@@ -285,46 +283,58 @@ input {
 // *************ROOM STATUSES VIEW SECTION*****************
 
 .room-statuses-block {
-  width: 70vw;
+  width: 80vw;
   height: 80vh;
   overflow: scroll;
   align-items: center;
   background-color: white;
+  padding: 2vw;
   // width:100%;
   // height: 100%;
   border: solid 5px;
   // border-radius: 10%;
 }
 
- .room-statuses-title {
-   margin-top: 1em;
-   font-size: 2em;
- }
+.room-statuses-title {
+  // margin-top: 1em;
+  font-size: 2em;
+}
 
 .room-statuses {
   justify-content: space-around;
   width: 100%;
   flex-wrap: wrap;
 }
+
 .room {
-  width: 15vw;
+  min-width: 12vw;
+  width: auto;
+  height: auto;
   border-radius: 10%;
   margin-top: 2em;
-  height: 17vh;
+  min-height: 13vh;
   padding: 10px;
-  border: 4px solid;
+  border: 1.5px solid;
   justify-content: space-around;
   align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
 
+.room:hover {
+  cursor: none;
+  transform: scale(1.025);
+  box-shadow: 2px 3px 20px 1px grey;
+  z-index: 0;
 }
 
 .room-data {
-  font-size: .6em;
+  font-size: 0.6em;
   font-family: "Gill Sans", sans-serif;
 }
 
 #room-number {
-  font-size: .8em;
+  font-size: 0.8em;
 }
 
 #room-type {}
@@ -334,43 +344,44 @@ input {
 #bed-size {}
 
 #room-cost {
-  font-size: .5em;
+  font-size: 0.5em;
 }
 // *************HOTEL DATA VIEW SECTION*****************
-.hotel-data-section {
-  margin-top: 10em;
-  margin-left: 5em;
+
+.hotel-stats-section {
+  margin-top: 1em;
+  max-margin-left: 2em;
   align-content: center;
 }
 
-.hotel-data-block {
+.hotel-stats-block {
   // border: solid 1px black;
   justify-content: space-between;
   padding: 1em;
-  width: 20vw;
+  max-width: 20vw;
   height: 40vh;
+  min-height: 35vh
 }
 
 .data-title {
   font-size: 1em;
-
 }
 
-.hotel-data {
+.hotel-stats {
   font-size: 0.9em;
   border: 3px solid;
   background-color: white;
   justify-content: space-around;
 }
 
-.revenue-data {}
+// .revenue-data {}
 
 .color-key {
   background-color: white;
   padding: 1em;
   border-radius: 15%;
   border: 3px solid;
-  width: 8vw;
+  max-width: 8vw;
 }
 
 .key-label {
@@ -390,11 +401,46 @@ input {
   // font-size: 1.4em;
 }
 // *************CUSTOMER HISTORY VIEW SECTION*****************
+
+.nav-search-bar {
+  display: flex;
+  align-content: baseline;
+  justify-content: space-around;
+  align-self: center;
+  padding-bottom: 20px;
+}
+
+.nav-search-input {
+  background-repeat: no-repeat;
+  background-position-x: 96%;
+  stroke-width: 1em;
+  width: 240px;
+  border-radius: 4px;
+  padding: 0.2em 0.5em;
+  background-size: 1.6em;
+  background-position-y: center;
+  transition: width 3s;
+  font-size: 1em;
+}
+
+.search-input {
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  stroke-width: 1em;
+  width: 240px;
+  border-radius: 4px;
+  padding: 0.5em;
+  background-size: 1.6em;
+  background-position-y: center;
+  margin-top: 2vw;
+  transition: width 0.5s;
+  font-size: 1em;
+}
+
+.search-input--clicked {
+  width: 44vw;
+}
 // *************BOOKING VIEW SECTION*****************
-
-
-
-
 
 .hidden {
   display: none;
