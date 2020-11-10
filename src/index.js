@@ -124,6 +124,17 @@ function displayUserName(userName) {
 
 // ~*~*~ MANAGER Functions ~*~*~
 
+function populateCustomerHistory(){
+  customerHistoryBlock.innerText = "";
+  fetchData.getUserData().then(data => data.forEach(user => {
+    customerHistoryBlock.insertAdjacentHTML('beforeend', `
+    <article class="user column-alignment" id="${user.id}">
+      <a class="user-name">${user.name}</a>
+    </article>
+    `)
+  }));
+
+}
 function populateRoomData() {
   roomStatuses.innerText = "";
   // let roomData = fetchData.getRoomData().then(data => data));
@@ -144,7 +155,7 @@ function displayCustomerHistory() {
   hideRoomStatuses();
   hideManageBookings();
   customerHistorySection.classList.remove('hidden');
-
+  populateCustomerHistory();
 }
 
 function hideCustomerHistory() {
