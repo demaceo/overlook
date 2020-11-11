@@ -22,6 +22,7 @@ import {
   roomStatusesNavLink,
   hotelStatsSection,
   hotelStatsContainer,
+  dataTitle,
   occupancy,
   revenue,
   searchInput,
@@ -62,11 +63,14 @@ roomStatusesNavLink.addEventListener('click', displayRoomStatuses);
 manageBookingsNavLink.addEventListener('click', displayManageBookings);
 searchInput.addEventListener('keyup', searchInputHandler);
 
+
+
 // -*-~-*-~-*- LOG IN Functions: -*-~-*-~-*-
 function displayLogIn() {
   event.preventDefault();
   hideGuestPage();
   hideManagerPage();
+  clearUserLogIn();
   userLoginSection.classList.remove('hidden');
   hotelMotto.innerText = "";
   hotelMotto.classList.add('hidden');
@@ -79,10 +83,6 @@ function displayUserError() {
   userNameInput.placeholder = "insert correct credentials";
   passwordInput.placeholder = "insert correct credentials"
 }
-
-// function toggleLogNavLink() {
-//   logInNavLink.innerText === "Log In" ? logInNavLink.innerText = "Log Out" : logInNavLink.innerText = "Log In"
-// }
 
 function displayUserName() {
   hotelMotto.innerText = `Welcome ${guest['name']}`;
@@ -119,12 +119,15 @@ function clearUserLogIn() {
   passwordInput.value = "";
 }
 
+
 // -*-~-*-~-*- MANAGER Section: -*-~-*-~-*-
 function populateRoomData() {
   managerData.innerText = "";
   managerDataTitle.innerText = "";
   managerDataTitle.innerText = "Room Statuses";
   fetchData.getRoomData().then(data => data.forEach(room => {
+    // manager.viewAvailableRooms(bookingData, roomData, today)
+    // .then(data => { return data.forEach(room => {
     managerData.insertAdjacentHTML('beforeend', `
     <article class="data-container room column-alignment" id="${room.number}">
       <a class="room-data" id="room-number"><u>Room #${room.number}</u></a>
@@ -137,9 +140,8 @@ function populateRoomData() {
   calculateTodaysStats();
 }
 
-// function collectTodaysOccupancy(){
-//
-// }
+
+
 function collectData() {
   fetchData.getBookingData().then(data => {
     return data.forEach(bookingLog => {
@@ -157,10 +159,11 @@ function collectData() {
 
 function calculateTodaysStats() {
   collectData();
-  console.log(roomData);
-  let totalRevenue = manager.totalRevenue(bookingData, roomData, '2020/01/11');
-  let totalOccupancy = manager.totalPercentOccupied(bookingData, roomData, '2020/01/11');
-  console.log(totalRevenue, totalOccupancy);
+  let totalRevenue = manager.totalRevenue(bookingData, roomData, today);
+  let totalOccupancy = manager.totalPercentOccupied(bookingData, roomData, today);
+  dataTitle.innerText = `${today} Stats:`;
+  occupancy.innerText = `%${totalOccupancy}`;
+  revenue.innerText = `$${totalRevenue}`;
 }
 
 
@@ -176,7 +179,7 @@ function searchInputHandler(e) {
 }
 
 function gatherSearchResults(searchEntry) {
-  // let searchResults = [];
+  userData = [];
   let lowerCaseSearchEntry = searchEntry.toLowerCase();
   fetchData.getUserData().then(data => {
       return data.filter(user => {
@@ -189,7 +192,7 @@ function gatherSearchResults(searchEntry) {
       })
     })
     .then(data => populateCustomerHistory(userData));
-  showUserHistory(userData)
+  registerClickEvent(userData)
 }
 
 function populateCustomerHistory(searchResults) {
@@ -197,7 +200,6 @@ function populateCustomerHistory(searchResults) {
   let sortedSearchResults = searchResults.sort((a, b) => {
     return a.name > b.name ? 1 : -1
   });
-  console.log(sortedSearchResults);
   managerData.innerText = "";
   managerDataTitle.innerText = "Customer History";
   sortedSearchResults.forEach(user => {
@@ -209,11 +211,29 @@ function populateCustomerHistory(searchResults) {
   })
 }
 
-function showUserHistory(clickedUser) {
+function displayUserHistory(clickedUser, grandTotal, bookingDates) {
+  managerData.innerText = "";
+  console.log(clickedUser, grandTotal, bookingDates);
+  managerDataTitle.innerText = `${clickedUser['name']}'s History`;
+  managerData.classList.remove('row-alignment');
+  managerData.classList.add('column-alignment');
+  managerData.insertAdjacentHTML('beforeend', `
+  <article class="clickedUser-grandTotal">Total Amount Spent: $${grandTotal}</article>
+  `);
+  bookingDates.forEach(date => {
+    managerData.insertAdjacentHTML('beforeend', `
+  <article class="clickedUser-booking">${date}</article>
+  `)
+  })
+}
+
+function collectUserHistory(clickedUser) {
   let userBookings = clickedUser.viewMyBookings(bookingData);
   let userGrandTotal = clickedUser.viewMyTotal(bookingData, roomData);
-  console.log(userBookings);
-  console.log(userGrandTotal);
+  let bookingDates = userBookings.map(booking => {
+    return booking['date']
+  });
+  displayUserHistory(clickedUser, userGrandTotal, bookingDates);
 }
 
 function registerClickEvent(searchResults) {
@@ -222,15 +242,15 @@ function registerClickEvent(searchResults) {
   userData.forEach(user => {
     if (user['name'] === clickedUserName) {
       clickedUser = new User(user)
-    };
-  })
-  console.log(clickedUser);
-  showUserHistory(clickedUser);
+      return collectUserHistory(clickedUser);
+    }
+  });
 }
 
 // -*-~-*-~-*- MANAGE BOOKINGS SECTION Functions: -*-~-*-~-*-
 function displayBookingsForm() {
-
+  manaageBookingsSection.classList.remove('hidden');
+  
 }
 
 // -*-~-*-~-*- DISPLAY (x) MANAGER SECTION Functions: -*-~-*-~-*-
@@ -239,6 +259,8 @@ function clearManagerData() {
   managerData.innerText = "";
   managerDataTitle.innerText = "";
   hotelStatsSection.classList.add('hidden');
+  managerData.classList.add('row-alignment');
+  managerData.classList.remove('column-alignment');
 }
 
 function displayManageBookings() {
@@ -256,7 +278,6 @@ function displayRoomStatuses() {
 }
 
 function displayManagerPage() {
-  // manager = new Manager();
   userLoginSection.classList.add('hidden');
   managerMotto.classList.remove('hidden');
   managerNavBar.classList.remove('hidden');
