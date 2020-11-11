@@ -35,7 +35,7 @@ let passwordInput = document.querySelector('#password');
 let hotelMotto = document.querySelector('.motto');
 let navBar = document.querySelector('.nav-bar');
 let logInNavLink = document.querySelector('.log-in-link');
-// let logOutNavLink = document.querySelector('.log-out-nav');
+let logOutNavLink = document.querySelector('#log-out-nav');
 let mainSection = document.querySelector('.main-section');
 
 let bookingSection = document.querySelector('.booking-section');
@@ -51,10 +51,9 @@ let managerDataTitle = document.querySelector('.manager-data-title');
 let managerData = document.querySelector('.manager-data');
 
 let roomStatusesNavLink = document.querySelector('#room-statuses-nav');
-let roomStatusesSection = document.querySelector('.room-statuses-section');
-// rename blocks to containers
-let roomStatusesBlock = document.querySelector('.room-statuses-block');
-let roomStatuses = document.querySelector('.room-statuses');
+// let roomStatusesSection = document.querySelector('.room-statuses-section');
+// let roomStatusesBlock = document.querySelector('.room-statuses-block');
+// let roomStatuses = document.querySelector('.room-statuses');
 
 let hotelStatsSection = document.querySelector('.hotel-stats-section');
 let hotelStatsContainer = document.querySelector('.hotel-stats-block');
@@ -63,18 +62,18 @@ let revenue = document.querySelector('#revenue');
 
 
 let customerHistoryNavLink = document.querySelector('#customer-history-nav');
-let customerHistorySection = document.querySelector('.customer-history-section');
-let customerHistoryBlock = document.querySelector('.customer-history-block');
+// let customerHistorySection = document.querySelector('.customer-history-section');
+// let customerHistoryBlock = document.querySelector('.customer-history-block');
 let searchInput = document.querySelector('.search-input');
 
 let manageBookingsNavLink = document.querySelector('#manage-bookings-nav');
-let manageBookingsSection = document.querySelector('.manage-bookings-section');
+//let manageBookingsSection = document.querySelector('.manage-bookings-section');
 let manageBookingsForm = document.querySelector('.manage-bookings-form');
 
 // --- EVENT LISTENERS ---
 window.addEventListener("load", displayManagerPage);
 logInNavLink.addEventListener('click', displayLogIn);
-// logOutNavLink.addEventListener('click', displayLogIn);
+logOutNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
 checkAvailabilityBttn.addEventListener('click', handleAvailableRoomsSection);
 
@@ -83,10 +82,10 @@ roomStatusesNavLink.addEventListener('click', displayRoomStatuses);
 manageBookingsNavLink.addEventListener('click', displayManageBookings);
 
 searchInput.addEventListener('click', extendSearchBar);
-searchInput.addEventListener('keypress', searchInputHandler);
+searchInput.addEventListener('keydown', searchInputHandler);
 
 let manager = new Manager();
-let user  = new User();
+let user = new User();
 // --- FUNCTIONS SECTION ---
 
 
@@ -147,11 +146,14 @@ function searchInputHandler(e) {
     let searchEntry = searchInput.value;
     if (searchEntry.length !== 0) {
       // displaySearchResults();
-      searchView.innerHTML = "";
       gatherSearchResults(searchEntry);
+      searchInput.innerHTML = "";
     }
+  } else {
+    console.log(searchInput.value);
   }
 }
+
 
 function gatherSearchResults(searchInput) {
   // let userSearchResult = [];
@@ -167,7 +169,8 @@ function gatherSearchResults(searchInput) {
 
 
 function populateCustomerHistory(userSearchResults) {
-  roomStatuses.innerText = "";
+  clearManagerData();
+  managerData.innerText = "";
   managerDataTitle.innerText = "";
   managerDataTitle.innerText = "Customer History";
   //fetchData.getUserData().then(data => data.forEach(user => {
@@ -190,11 +193,11 @@ function populateCustomerHistory(userSearchResults) {
 }
 
 function populateRoomData() {
-  roomStatuses.innerText = "";
+  managerData.innerText = "";
   managerDataTitle.innerText = "";
   managerDataTitle.innerText = "Room Statuses";
   fetchData.getRoomData().then(data => data.forEach(room => {
-    roomStatuses.insertAdjacentHTML('beforeend', `
+    managerData.insertAdjacentHTML('beforeend', `
     <article class="data-container room column-alignment" id="${room.number}">
       <a class="room-data" id="room-number"><u>Room #${room.number}</u></a>
       <a class="room-data" id="room-type"><i>${room.roomType}</i></a>
@@ -205,42 +208,24 @@ function populateRoomData() {
   }));
 }
 
-// ~*~*~ HIDE/DISPLAY Functions ~*~*~
-function displayCustomerHistory() {
-  hideRoomStatuses();
-  hideManageBookings();
-  customerHistorySection.classList.remove('hidden');
-  populateCustomerHistory();
-}
 
-function hideCustomerHistory() {
-  customerHistorySection.classList.add('hidden');
+// ~*~*~ DISPLAY SECTION Functions ~*~*~
+
+function clearManagerData(){
+  managerData.innerText = "";
+  managerDataTitle.innerText = "";
+  hotelStatsSection.classList.add('hidden');
 }
 
 function displayManageBookings() {
-  hideRoomStatuses();
-  hideCustomerHistory();
-  manageBookingsSection.classList.remove('hidden');
-
+  clearManagerData()
 }
 
-function hideManageBookings() {
-  manageBookingsSection.classList.add('hidden');
-}
 
 function displayRoomStatuses() {
-  hideManageBookings();
-  hideCustomerHistory();
-  roomStatusesSection.classList.remove('hidden');
-  roomStatusesBlock.classList.remove('hidden');
-  hotelStatsSection.classList.remove('hidden');
+  clearManagerData();
   populateRoomData();
-}
-
-function hideRoomStatuses() {
-  roomStatusesSection.classList.add('hidden');
-  roomStatusesBlock.classList.add('hidden');
-  hotelStatsSection.classList.add('hidden');
+  hotelStatsSection.classList.remove('hidden');
 }
 
 function displayManagerPage() {
@@ -252,7 +237,6 @@ function displayManagerPage() {
   clearUserLogIn();
   hideGuestPage();
   populateRoomData();
-  // bookingSection.classList.remove('hidden');
 }
 
 function hideManagerPage() {
@@ -290,7 +274,5 @@ function checkAvailableRooms() {
 }
 
 function handleAvailableRoomsSection() {
-  // setTimeout(checkAvaialbleRooms, 3000);
   checkAvailableRooms();
-
 }

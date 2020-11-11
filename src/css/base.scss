@@ -282,19 +282,6 @@ input {
 .manager-data-title {
   font-size: 2em;
 }
-// *************ROOM STATUSES VIEW SECTION*****************
-// .room-statuses-block {
-//   width: 80vw;
-//   height: 80vh;
-//   overflow: scroll;
-//   align-items: center;
-//   background-color: white;
-//   padding: 2vw;
-//   border: solid 5px;
-// }
-// .room-statuses-title {
-//   font-size: 2em;
-// }
 
 .manager-data {
   justify-content: space-around;
@@ -423,6 +410,7 @@ input {
   // margin-top: 5px;
   align-self: center;
   background: url('../images/user-clear-circle.svg');
+  font-size: .8em;
   background-repeat: no-repeat;
   width: 15px;
   margin-right: 30px;
@@ -447,9 +435,9 @@ input {
   justify-content: space-around;
 }
 
-.dropdown-item {
-  font-size: .8em;
-}
+// .dropdown-item {
+//   font-size: .8em;
+// }
 
 // #room-statuses-nav{
 //   background: url('../images/wizard.svg');
