@@ -2,13 +2,16 @@
 // Do not delete or rename this file ********
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
+import {
+  fetchData
+} from './classes/fetchData';
+import User from './classes/userRepo';
+import Manager from './classes/managerRepo';
+import Booking from './classes/bookingRepo';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 // import './images/turing-logo.png';
 // import './images/palmys.jpg';
 // import 'audio.m4a';
-import {
-  fetchData
-} from './classes/fetchData';
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 // console.log(fetchData.getUserData());
@@ -32,7 +35,7 @@ let passwordInput = document.querySelector('#password');
 let hotelMotto = document.querySelector('.motto');
 let navBar = document.querySelector('.nav-bar');
 let logInNavLink = document.querySelector('.log-in-link');
-let logOutNavLink = document.querySelector('.log-out-nav')
+// let logOutNavLink = document.querySelector('.log-out-nav');
 let mainSection = document.querySelector('.main-section');
 
 let bookingSection = document.querySelector('.booking-section');
@@ -43,6 +46,9 @@ let checkAvailabilityBttn = document.querySelector('.check-availability-button')
 let managerMotto = document.querySelector('.manager-motto');
 let managerNavBar = document.querySelector('.manager-nav-bar');
 let managerView = document.querySelector('.manager-view');
+let managerDataBlock = document.querySelector('.manager-data-block');
+let managerDataTitle = document.querySelector('.manager-data-title');
+let managerData = document.querySelector('.manager-data');
 
 let roomStatusesNavLink = document.querySelector('#room-statuses-nav');
 let roomStatusesSection = document.querySelector('.room-statuses-section');
@@ -55,26 +61,32 @@ let hotelStatsContainer = document.querySelector('.hotel-stats-block');
 let occupancy = document.querySelector('#occupancy');
 let revenue = document.querySelector('#revenue');
 
+
 let customerHistoryNavLink = document.querySelector('#customer-history-nav');
 let customerHistorySection = document.querySelector('.customer-history-section');
 let customerHistoryBlock = document.querySelector('.customer-history-block');
-let searchUsersInput = document.querySelector('.search-input');
+let searchInput = document.querySelector('.search-input');
 
 let manageBookingsNavLink = document.querySelector('#manage-bookings-nav');
 let manageBookingsSection = document.querySelector('.manage-bookings-section');
 let manageBookingsForm = document.querySelector('.manage-bookings-form');
 
 // --- EVENT LISTENERS ---
-//window.addEventListener("load", displayManagerPage);
+window.addEventListener("load", displayManagerPage);
 logInNavLink.addEventListener('click', displayLogIn);
-logOutNavLink.addEventListener('click', displayLogIn);
+// logOutNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
 checkAvailabilityBttn.addEventListener('click', handleAvailableRoomsSection);
 
 roomStatusesNavLink.addEventListener('click', displayRoomStatuses);
-customerHistoryNavLink.addEventListener('click', displayCustomerHistory);
+//customerHistoryNavLink.addEventListener('click', displayCustomerHistory);
 manageBookingsNavLink.addEventListener('click', displayManageBookings);
 
+searchInput.addEventListener('click', extendSearchBar);
+searchInput.addEventListener('keypress', searchInputHandler);
+
+let manager = new Manager();
+let user  = new User();
 // --- FUNCTIONS SECTION ---
 
 
@@ -90,14 +102,15 @@ function displayLogIn() {
   bookingSection.classList.add('hidden');
 }
 
-function toggleLogOutLink(){
-
+function toggleLogOutNavLink() {
+  logInNavLink.innerText === "Log In" ? logInNavLink.innerText === "Log Out" : logInNavLink.innerText = "Log In"
 }
 
 function determineUserInput() {
   if (userNameInput.value.includes("customer") && passwordInput.value === "overlook2020") { //"customer" + number/userId
-    // setTimeout(displayGuestPage, 1000);
+    //  let user  = new User();
     displayGuestPage();
+    toggleLogOutNavLink();
   } else if (userNameInput.value === "manager" && passwordInput.value === "overlook2020") {
     displayManagerPage();
   } else {
@@ -124,33 +137,75 @@ function displayUserName(userName) {
 
 // ~*~*~ MANAGER Functions ~*~*~
 
-function populateCustomerHistory(){
-  customerHistoryBlock.innerText = "";
-  fetchData.getUserData().then(data => data.forEach(user => {
-    customerHistoryBlock.insertAdjacentHTML('beforeend', `
+// *~*~*SEARCH BAR Functions*~*~*
+function extendSearchBar() {
+  searchInput.classList.add('search-input--clicked');
+}
+
+function searchInputHandler(e) {
+  if (searchInput.value !== undefined && e.key === 'Enter') {
+    let searchEntry = searchInput.value;
+    if (searchEntry.length !== 0) {
+      // displaySearchResults();
+      searchView.innerHTML = "";
+      gatherSearchResults(searchEntry);
+    }
+  }
+}
+
+function gatherSearchResults(searchInput) {
+  // let userSearchResult = [];
+  // let capitalizeInput = searchInput[0].toUpperCase() + searchInput.substring(1);
+  // fetchData.getUserData().then(data => data.filter(user =>
+  //   //return user === capitalizeInput))
+  //   if (user.name.includes(capitalizeInput)) {
+  //     searchResults.push(user)
+  //     return populateCustomerHistory(userSearchResults);
+  //   }
+  // ))
+};
+
+
+function populateCustomerHistory(userSearchResults) {
+  roomStatuses.innerText = "";
+  managerDataTitle.innerText = "";
+  managerDataTitle.innerText = "Customer History";
+  //fetchData.getUserData().then(data => data.forEach(user => {
+  userSearchResults.forEach(user => {
+    roomStatuses.insertAdjacentHTML('beforeend', `
     <article class="user column-alignment" id="${user.id}">
       <a class="user-name">${user.name}</a>
     </article>
+    <tr>
+      <td>${user.name}</td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+    </tr>
     `)
-  }));
-
+  })
 }
+
 function populateRoomData() {
   roomStatuses.innerText = "";
-  // let roomData = fetchData.getRoomData().then(data => data));
-  //  <a class="room-data" id="bed-count">${room.numBeds} bed(s)</a>
+  managerDataTitle.innerText = "";
+  managerDataTitle.innerText = "Room Statuses";
   fetchData.getRoomData().then(data => data.forEach(room => {
     roomStatuses.insertAdjacentHTML('beforeend', `
-      <article class="room column-alignment" id="${room.number}">
-        <a class="room-data" id="room-number"><u>Room #${room.number}</u></a>
-        <a class="room-data" id="room-type"><i>${room.roomType}</i></a>
-        <a class="room-data" id="bed-size"><b>${room.numBeds}</b> ${room.bedSize}-size bed(s)</a>
-        <a class="room-data" id="room-cost">$${room.costPerNight} / night </a>
-      </article>
-      `)
+    <article class="data-container room column-alignment" id="${room.number}">
+      <a class="room-data" id="room-number"><u>Room #${room.number}</u></a>
+      <a class="room-data" id="room-type"><i>${room.roomType}</i></a>
+      <a class="room-data" id="bed-size"><b>${room.numBeds}</b> ${room.bedSize}-size bed(s)</a>
+      <a class="room-data" id="room-cost">$${room.costPerNight} / night </a>
+    </article>
+    `)
   }));
 }
 
+// ~*~*~ HIDE/DISPLAY Functions ~*~*~
 function displayCustomerHistory() {
   hideRoomStatuses();
   hideManageBookings();
@@ -206,6 +261,8 @@ function hideManagerPage() {
   managerView.classList.add('hidden');
   hotelStatsSection.classList.add('hidden');
 }
+
+
 
 // ~*~*~ GUEST Functions ~*~*~
 function displayGuestPage() {
