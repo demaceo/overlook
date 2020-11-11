@@ -13,11 +13,10 @@ export default class Manager extends User {
   }
 
   totalRevenue(bookingData, roomData, date) {
-    return Number(this.viewUnavailableRooms(bookingData, roomData, date)
-      .reduce((totalRevenue, room) => {
-        totalRevenue += room.costPerNight;
-        return totalRevenue
-      }, 0).toFixed(2))
+    return this.viewUnavailableRooms(bookingData, roomData, date).reduce((totalRevenue, room) => {
+      totalRevenue += room.costPerNight;
+      return totalRevenue
+      }, 0).toFixed(2)
   }
 
   totalPercentOccupied(bookingData, roomData, date) {
