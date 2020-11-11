@@ -11,8 +11,8 @@ import {
 } from '../src/classes/fetchData';
 import {
   userMockData,
-  bookingMockData,
-  roomMockData
+  roomMockData,
+  bookingMockData
 } from "./mock-data";
 
 describe.skip('Manager class properties and methods', function() {
