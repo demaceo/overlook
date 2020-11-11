@@ -20,7 +20,7 @@ export const bookingMockData = [
     id: "randomID1",
     userID: 20,
     date: "2019/04/20",
-    roomNumber: 1,
+    roomNumber: 6,
     roomServiceCharges: []
   },
 
@@ -52,7 +52,7 @@ export const bookingMockData = [
     id: "randomID5",
     userID: 70,
     date: "2021/10/13",
-    roomNumber: 3,
+    roomNumber: 9,
     roomServiceCharges: []
   },
 
@@ -60,7 +60,7 @@ export const bookingMockData = [
     id: "randomID6",
     userID: 70,
     date: "2021/01/02",
-    roomNumber: 3,
+    roomNumber: 9,
     roomServiceCharges: []
   },
 
@@ -68,7 +68,7 @@ export const bookingMockData = [
     id: "randomID7",
     userID: 70,
     date: "2021/02/06",
-    roomNumber: 4,
+    roomNumber: 6,
     roomServiceCharges: []
   },
 
@@ -113,9 +113,9 @@ export const roomMockData = [
     bedSize:"twin",
     numBeds:1,
     costPerNight:172.6
-  }
+  },
   {
-    number:3,
+    number:2,
     roomType:"suite",
     bidet:true,
     bedSize:"king",

@@ -1,5 +1,5 @@
-import Booking from './Booking';
-import User from './User';
+import Booking from './bookingRepo';
+import User from './userRepo';
 import {
   fetchData
 } from './fetchData';

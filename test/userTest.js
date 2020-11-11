@@ -1,8 +1,8 @@
 import {
   expect
 } from 'chai';
-import User from '../src/classes/user';
-import Booking from '../src/classes/booking';
+import User from '../src/classes/userRepo';
+import Booking from '../src/classes/bookingRepo';
 import {
   userMockData,
   bookingMockData,
@@ -30,7 +30,7 @@ describe('User class properties and methods', function() {
     expect(user1).to.be.an.instanceof(User);
   });
 
-  it.skip('should have a default id number of 666 if none is provided', function() {
+  it('should have a default id number of 666 if none is provided', function() {
     expect(user3.id).to.equal(666);
   });
 
@@ -73,7 +73,7 @@ describe('User class properties and methods', function() {
     expect(user1.viewAvailableRoomsByType(bookingData, roomData, "2021/02/06", 'junior suite').length).to.equal(1);
   });
 
-  it('should be able to book a room', function() {
+  it.only('should be able to book a room', function() {
     user1.bookMyRoom("2020/02/04", 1) //utilize user3
     user1.bookMyRoom("2020/02/05", 2) //utilize user3
     expect(user1.bookMyRoom("2020/02/03", 1)).to.be.an.instanceof(Booking);

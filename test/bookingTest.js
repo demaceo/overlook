@@ -2,7 +2,7 @@
 import {
   expect
 } from 'chai';
-import Booking from '../src/classes/booking';
+import Booking from '../src/classes/bookingRepo';
 import {
   bookingMockData,
   roomMockData

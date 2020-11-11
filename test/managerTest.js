@@ -3,16 +3,16 @@ const spies = require('chai-spies');
 const expect = chai.expect;
 chai.use(spies);
 
-import User from '../src/classes/user';
-import Manager from '../src/classes/manager';
-import Booking from '../src/classes/booking';
+import User from '../src/classes/userRepo';
+import Manager from '../src/classes/managerRepo';
+import Booking from '../src/classes/bookingRepo';
 import {
   fetchData
 } from '../src/classes/fetchData';
 import {
   userMockData,
-  bookingMockData,
-  roomMockData
+  roomMockData,
+  bookingMockData
 } from "./mock-data";
 
 describe.skip('Manager class properties and methods', function() {
@@ -66,8 +66,8 @@ describe.skip('Manager class properties and methods', function() {
 
   it('should be able to book a room for a user', function() {
     manager.addCustomerBooking(userData, "Doodle Bob", "2020/02/03", 1);
-    expect(apiRequest.createBooking).to.have.been.called(1);
-    expect(apiRequest.createBooking).to.have.been.called.with({
+    expect(fetchData.createBooking).to.have.been.called(1);
+    expect(fetchData.createBooking).to.have.been.called.with({
       "userID": 55,
       "date": "2020/02/03",
       "roomNumber": 1
@@ -76,15 +76,15 @@ describe.skip('Manager class properties and methods', function() {
 
   it('should be able to delete a booking for a user', function() {
     manager.deleteCustomerBooking(bookingData, 'randomID3');
-    expect(apiRequest.deleteBooking).to.have.been.called(1);
-    expect(apiRequest.deleteBooking).to.have.been.called.with({
+    expect(fetchData.deleteBooking).to.have.been.called(1);
+    expect(fetchData.deleteBooking).to.have.been.called.with({
       "id": 'randomID3'
     });
   });
 
   it('should not be able to delete a booking in the past or today', function() {
     manager.deleteCustomerBooking(bookingData, "randomID1")
-    expect(apiRequest.deleteBooking).to.have.been.called(0);
+    expect(fetchData.deleteBooking).to.have.been.called(0);
   });
 
 })
