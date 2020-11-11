@@ -4,10 +4,13 @@
 // }
 // $primary-background: radial-gradient(circle, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 1%);
 // $palmys: url(./images/palmys.jpg);
+$ice-blue: #D7DFE0;
 
 html {
-  height: 100vh;
-  width: 100vw;
+  // height: 100vh;
+  // width: 100vw;
+  height: 100%;
+  width: 100%;
   font-family: sans-serif;
 }
 
@@ -24,22 +27,21 @@ html {
 }
 
 body {
-  background-color: #D7DFE0;
+  background-color: $ice-blue;
   height: 100vh;
   width: 100vw;
 }
-// *************HERO SECTION*****************
+// *************HEADER SECTION*****************
+
 header {
-  // display: flex;
-  // flex-direction: column;
   justify-content: center;
   align-content: baseline;
   background-color: teal;
-  border-width: thick;
+  // border-width: thick;
+  width: 100%;
   height: 30vh;
   align-items: center;
-  padding: 40px;
-  // background-color: white;
+  padding-bottom: 40px;
 }
 
 .hotel-title {
@@ -55,28 +57,30 @@ h1 {
   font-style: italic;
 }
 
-.hero {
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-}
-// ************* MAIN SECTION*****************
-main {
-  justify-content: space-between;
-}
-
 nav {
   background-color: orange;
   justify-content: space-around;
   align-content: baseline;
-  // width: 100vw;
-  font-size: 1.2em;
+  font-size: 1.3em;
   position: sticky;
   top: 0;
   box-shadow: 0 6px 12px 0 #0000003d;
-  z-index: 10;
-  // height: 5em;
-  padding: 20px;
+  // width: 100vw;
+  z-index: 10px;
+  height: 2em;
+  // padding: 20px;
+  padding: 20px 0;
+}
+
+.nav-links {
+  align-self: baseline;
+}
+// ************* MAIN SECTION*****************
+
+main {
+  justify-content: space-between;
+  // height:100%;
+  // width: 100%;
 }
 // .log-in-link{
 //   align-items:center;
@@ -97,6 +101,7 @@ article {
 //   display:
 // }
 // *************HOME PAGE SECTION*****************
+
 h3 {
   align-self: center;
   font-size: 5em;
@@ -127,16 +132,6 @@ h3 {
   padding: 5vh;
 }
 
-.main-content-img-wrapper {
-  overflow: hidden;
-  display: flex;
-  max-width: 43vw;
-}
-
-.main-content-img {
-  height: 103%;
-}
-
 .main-content-block {
   padding-left: 1vw;
   border-radius: 5%;
@@ -152,16 +147,16 @@ h3 {
   font-size: 2.5em;
   padding: 0 1vw;
   font-weight: bolder;
-  // transition: background-color 0.2s ease-in, color ease-in .2s;
+  transition: background-color 0.2s ease-in, color ease-in 0.2s;
 }
-// .main-content--title:hover {
-//   background-color: grey;
-//   color: black;
-// }
+
+.main-content--title:hover {
+  background-color: grey;
+  color: black;
+}
 
 .main-content-description {
   font-size: 1.1em;
-  // font-style: italic;
   font-weight: 100;
   line-height: 2em;
   border-radius: 8px;
@@ -187,6 +182,7 @@ h3 {
   font-weight: lighter;
 }
 // *************BOOKING A ROOM SECTION*****************
+
 .booking-section {
   margin-top: 150px;
   margin-right: 80px;
@@ -195,21 +191,14 @@ h3 {
 .booking-form {
   border-radius: 15%;
   border: solid 10px;
-  // position: sticky;
-  // top: 100px;
   border-color: teal;
   background-color: white;
   justify-content: space-around;
   align-items: center;
   max-height: 40vh;
   max-width: 20vw;
-  // padding-bottom: 2em;
   padding: 0 2em 3em;
 }
-// .booking-input {
-//   font-size: 0.7em;
-//   justify-content: space-around;
-// }
 
 h4 {
   align-self: center;
@@ -237,6 +226,7 @@ label {
   border-width: medium;
 }
 // *************USER LOG IN SECTION*****************
+
 .user-login-section {
   display: flex;
   background-color: orange;
@@ -268,38 +258,197 @@ input {
   padding: 10px;
   border-width: medium;
 }
-// footer {}
+// *************MANAGER VIEW SECTION*****************
 
+.manager-view {}
+
+.manager-block-info {
+  margin-top: 5em;
+}
+
+.manager-data {
+  width: 80vw;
+  height: 80vh;
+  overflow: scroll;
+  align-items: center;
+  background-color: white;
+  padding: 2vw;
+  border: solid 5px;
+}
+
+.manager-data-title {
+  font-size: 2em;
+}
+// *************ROOM STATUSES VIEW SECTION*****************
+// .room-statuses-block {
+//   width: 80vw;
+//   height: 80vh;
+//   overflow: scroll;
+//   align-items: center;
+//   background-color: white;
+//   padding: 2vw;
+//   border: solid 5px;
+// }
+// .room-statuses-title {
+//   font-size: 2em;
+// }
+
+.room-statuses {
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.room {
+  min-width: 12vw;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  margin-top: 2em;
+  min-height: 13vh;
+  padding: 10px;
+  border: 1.5px solid;
+  justify-content: space-around;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.room:hover {
+  cursor: none;
+  transform: scale(1.025);
+  box-shadow: 2px 3px 20px 1px grey;
+  z-index: 0;
+}
+
+.room-data {
+  font-size: 0.6em;
+  font-family: "Gill Sans", sans-serif;
+}
+
+#room-number {
+  font-size: 0.8em;
+}
+
+#room-type {}
+
+#bed-count {}
+
+#bed-size {}
+
+#room-cost {
+  font-size: 0.5em;
+}
+// *************HOTEL DATA VIEW SECTION*****************
+
+.hotel-stats-section {
+  margin-top: 1em;
+  max-margin-left: 2em;
+  align-content: center;
+}
+
+.hotel-stats-block {
+  justify-content: space-between;
+  padding: 1em;
+  max-width: 20vw;
+  height: 40vh;
+  min-height: 35vh;
+}
+
+.data-title {
+  font-size: 1em;
+}
+
+.hotel-stats {
+  font-size: 0.9em;
+  border: 3px solid;
+  background-color: white;
+  justify-content: space-around;
+}
+// .revenue-data {}
+
+.color-key {
+  background-color: white;
+  padding: 1em;
+  border-radius: 15%;
+  border: 3px solid;
+  max-width: 8vw;
+}
+
+.key-label {
+  font-size: 1.7em;
+  justify-content: space-between;
+  width: 100%;
+  align-self: baseline;
+}
+
+#green {
+  color: green;
+}
+
+#red {
+  color: red;
+}
+// *************CUSTOMER HISTORY VIEW SECTION*****************
+
+.nav-search-bar {
+  display: flex;
+  align-content: baseline;
+  justify-content: space-around;
+  align-self: flex-start;
+  // width: 100%;
+  //padding-bottom: 10px;
+}
+// .nav-search-input {
+//   background-repeat: no-repeat;
+//   background-position-x: 96%;
+//   stroke-width: 1em;
+//   width: 240px;
+//   border-radius: 4px;
+//   padding: 0.2em 0.5em;
+//   background-size: 1.6em;
+//   background-position-y: center;
+//   transition: width 3s;
+//   font-size: 1em;
+// }
+
+.search-input {
+  background-repeat: no-repeat;
+  // background-position-x: 98%;
+  stroke-width: 1em;
+  width: 180px;
+  border-radius: 4px;
+  // padding: 0.5em;
+  background-size: 1.6em;
+  background-position-y: center;
+  // margin-top: 2vw;
+  top: 0;
+  // transition: width 0.5s;
+  // font-size: 1em;
+}
+// .search-input--clicked {
+//   width: 44vw;
+// }
+
+.customer-history-block {
+  justify-content: space-around;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.user {
+  min-width: 12vw;
+  width: auto;
+  height: auto;
+  border-radius: 10%;
+  margin-top: 2em;
+  min-height: 13vh;
+  padding: 10px;
+  border: 1.5px solid;
+  justify-content: space-around;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+// *************MANAGE BOOKING VIEW SECTION*****************
 .hidden {
   display: none;
 }
-// *************MANAGER VIEW SECTION*****************
-.manager-view {}
-
-.manager-block-info {}
-
-
-// *************ROOM STATUSES VIEW SECTION*****************
-.room-statuses-title {}
-
-.room-statuses-block {}
-
-.room {}
-
-.room-number{}
-
-.room-type{}
-
-.bed-count{}
-.bed-size{}
-.room-cost{}
-
-// *************HOTEL DATA VIEW SECTION*****************
-.hotel-data-section{}
-.hotel-data-block{}
-.data-title{}
-.occupancy-data{}
-.revenue-data{}
-
-// *************CUSTOMER HISTORY VIEW SECTION*****************
-// *************BOOKING VIEW SECTION*****************
