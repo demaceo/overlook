@@ -5,7 +5,6 @@ import {
 
 export default class User {
   constructor(userData = {}) {
-  // constructor(userData) {
     this.id = userData.id || 666;
     this.name = userData.name || 'Manager';
   }

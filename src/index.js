@@ -40,12 +40,18 @@ import Booking from './classes/bookingRepo';
 // audio.play();
 
 let currentUser;
+let guest;
+let manager = new Manager();
+let booking;
+let userData = [];
+let bookingData = [];
+let roomData = [];
 let today = new Date().toLocaleDateString();
 
 
 
 // --- EVENT LISTENERS: ---
-//window.addEventListener("load", displayManagerPage);
+window.addEventListener("load", displayManagerPage);
 logInNavLink.addEventListener('click', displayLogIn);
 logOutNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
@@ -61,6 +67,7 @@ function displayLogIn() {
   hideGuestPage();
   hideManagerPage();
   userLoginSection.classList.remove('hidden');
+  hotelMotto.innerText = "";
   hotelMotto.classList.add('hidden');
   navBar.classList.add('hidden');
   mainSection.classList.add('hidden');
@@ -77,8 +84,7 @@ function displayUserError() {
 // }
 
 function displayUserName() {
-  hotelMotto.innerText = "";
-  hotelMotto.innerText = `Welcome ${currentUser['name']}`;
+  hotelMotto.innerText = `Welcome ${guest['name']}`;
 }
 
 function matchGuestLogIn(guestName) {
@@ -87,7 +93,7 @@ function matchGuestLogIn(guestName) {
         let clonedInput = `customer${user.id}`;
         if (guestName === clonedInput) {
           Promise.resolve(user)
-            .then(user => currentUser = new User(user))
+            .then(user => guest = new User(user))
         }
       })
     })
@@ -96,12 +102,11 @@ function matchGuestLogIn(guestName) {
 
 function determineUserInput() {
   let guestName = userNameInput.value;
-  if (userNameInput.value.includes("customer") && passwordInput.value === "overlook2020") { //"customer" + number/userId
+  if (userNameInput.value.includes("customer") && passwordInput.value === "overlook2020") {
     matchGuestLogIn(guestName);
     displayGuestPage();
     logInNavLink.innerText = "Log Out"
   } else if (userNameInput.value === "manager" && passwordInput.value === "overlook2020") {
-    user = new Manager();
     displayManagerPage();
   } else {
     displayUserError()
@@ -128,84 +133,78 @@ function populateRoomData() {
     </article>
 `)
   }));
-  // calculateHotelStats();
+  calculateTodaysStats();
 }
 
-function calculateHotelStats() {
-  // let userData = [];
-  // let bookingData = [];
-  // let roomData = [];
-  // fetchData.getBookingData().then(data => {
-  //   return bookingData.push(...data)
-  // });
-  // fetchData.getUserData().then(data => {
-  //   return userData.push(...data)
-  // });
-  // fetchData.getRoomData().then(data => {
-  //   return roomData.push(...data)
-  // });
-  // revenue.innerText = manager.totalRevenue(today);
+// function collectTodaysOccupancy(){
+//
+// }
+function collectData() {
+  fetchData.getBookingData().then(data => {
+    return data.forEach(bookingLog => {
+        Promise.resolve(data)
+          .then(data => bookingData.push(bookingLog))
+    })
+  });
+  fetchData.getRoomData().then(data => {
+    return data.forEach(room => {
+      Promise.resolve(data)
+      .then(data => roomData.push(room))
+    })
+  });
+}
+
+function calculateTodaysStats() {
+  collectData();
+  console.log(roomData);
+  let totalRevenue = manager.totalRevenue(bookingData, roomData, '2020/01/11');
+  let totalOccupancy = manager.totalPercentOccupied(bookingData, roomData, '2020/01/11');
+  console.log(totalRevenue, totalOccupancy);
 }
 
 
 // -*-~-*-~-*- SEARCH BAR / CUSTOMER HISTORY Functions: -*-~-*-~-*-
 
 function searchInputHandler(e) {
-  let searchEntry;
   if (searchInput.value !== undefined && e.key === 'Enter') {
-    searchEntry = searchInput.value;
-    console.log("searchEntry", searchEntry);
-    if (searchEntry.length !== 0) {
-      // displaySearchResults();
-      gatherSearchResults(searchEntry);
-      searchInput.value = "";
-    } else {
-      console.log(searchInput.value);
-    }
+    let searchEntry = searchInput.value;
+    let lowerCaseSearch = searchEntry.toLowerCase();
+    gatherSearchResults(lowerCaseSearch);
+    searchInput.value = "";
   }
 }
 
-
 function gatherSearchResults(searchEntry) {
-  let userSearchResult = [];
-  let capitalizeInput = searchEntry[0].toUpperCase() + searchEntry.substring(1);
-  fetchData.getUserData().then(data => console.log(data));
-  fetchData.getUserData().then(data => data.filter(user => {
-    //return user === capitalizeInput))
-    // if (user.name.includes(capitalizeInput)) {
-    if (user.name === searchEntry) {
-      console.log(user);
-      userSearchResults.push(user);
-      console.log(userSearchResult);
-      return populateCustomerHistory(userSearchResults);
-    }
-  }))
-};
+  let searchResults = [];
+  let lowerCaseSearchEntry = searchEntry.toLowerCase();
+  fetchData.getUserData().then(data => {
+      return data.filter(user => {
+        let userName = `${user['name'].toLowerCase()}`;
+        if (userName.includes(lowerCaseSearchEntry)) {
+          searchResults.push(user);
+          Promise.resolve(user)
+            .then(user => guest = new User(user))
+        }
+      })
+    })
+    .then(data => populateCustomerHistory(searchResults));
+}
 
-function populateCustomerHistory(userSearchResults) {
+function populateCustomerHistory(searchResults) {
   clearManagerData();
   managerData.innerText = "";
-  managerDataTitle.innerText = "";
   managerDataTitle.innerText = "Customer History";
   //fetchData.getUserData().then(data => data.forEach(user => {
-  userSearchResults.forEach(user => {
-    roomStatuses.insertAdjacentHTML('beforeend', `
-    <article class="user column-alignment" id="${user.id}">
+  searchResults.forEach(user => {
+    managerData.insertAdjacentHTML('beforeend', `
+    <article class="user-history data-container column-alignment" id=${user.id}>
       <a class="user-name">${user.name}</a>
     </article>
-    <tr>
-      <td>${user.name}</td>
-    </tr>
-    <tr>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-    </tr>
     `)
   })
 }
 
+// -*-~-*-~-*- MANAGE BOOKINGS SECTION Functions: -*-~-*-~-*-
 function displayBookingsForm() {
 
 }
@@ -233,6 +232,7 @@ function displayRoomStatuses() {
 }
 
 function displayManagerPage() {
+  // manager = new Manager();
   userLoginSection.classList.add('hidden');
   managerMotto.classList.remove('hidden');
   managerNavBar.classList.remove('hidden');
