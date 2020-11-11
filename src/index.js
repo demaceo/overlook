@@ -67,56 +67,51 @@ function displayLogIn() {
   bookingSection.classList.add('hidden');
 }
 
-function toggleLogOutNavLink() {
-  logInNavLink.innerText === "Log In" ? logInNavLink.innerText === "Log Out" : logInNavLink.innerText = "Log In"
+function displayUserError() {
+  userNameInput.placeholder = "insert correct credentials";
+  passwordInput.placeholder = "insert correct credentials"
+}
+
+// function toggleLogNavLink() {
+//   logInNavLink.innerText === "Log In" ? logInNavLink.innerText = "Log Out" : logInNavLink.innerText = "Log In"
+// }
+
+function displayUserName() {
+  hotelMotto.innerText = "";
+  hotelMotto.innerText = `Welcome ${currentUser['name']}`;
 }
 
 function matchGuestLogIn(guestName) {
   fetchData.getUserData().then(data => {
-    data.find(user => {
-      let clonedInput = `customer${user.id}`;
-      if (guestName === clonedInput) {
-        // console.log('user', user);
-        return currentUser = new User(user)
-      }
+      return data.find(user => {
+        let clonedInput = `customer${user.id}`;
+        if (guestName === clonedInput) {
+          Promise.resolve(user)
+            .then(user => currentUser = new User(user))
+        }
+      })
     })
-  });
-  displayUserName(currentUser)
+    .then(data => displayUserName());
 }
 
 function determineUserInput() {
   let guestName = userNameInput.value;
-  let correctPassword = passwordInput.value = "overlook2020";
-  if (guestName.includes("customer") && passwordInput.value === "overlook2020") { //"customer" + number/userId
+  if (userNameInput.value.includes("customer") && passwordInput.value === "overlook2020") { //"customer" + number/userId
     matchGuestLogIn(guestName);
     displayGuestPage();
-    toggleLogOutNavLink();
-  } else if (userNameInput.value === "manager" && correctPassword) {
+    logInNavLink.innerText = "Log Out"
+  } else if (userNameInput.value === "manager" && passwordInput.value === "overlook2020") {
     user = new Manager();
     displayManagerPage();
   } else {
     displayUserError()
   }
-  // setTimeout(clearUserLogIn, 2000);
-}
-
-function displayUserError() {
-
 }
 
 function clearUserLogIn() {
   userNameInput.value = "";
   passwordInput.value = "";
 }
-
-function displayUserName(currentUser) {
-  hotelMotto.innerText = "";
-  console.log(currentUser);
-  hotelMotto.insertAdjacentHTML('afterbegin', `
-  <i>Welcome ${currentUser['name']}</i>
-  `)
-}
-
 
 // -*-~-*-~-*- MANAGER Section: -*-~-*-~-*-
 function populateRoomData() {
