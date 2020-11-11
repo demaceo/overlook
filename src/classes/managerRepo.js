@@ -56,17 +56,4 @@ export default class Manager extends User {
       return `Cannot delete bookings on or before today\'s date: ${this.date}`
     }
   }
-
-  getDate() {
-    let newDate = new Date();
-    let month = newDate.getMonth() + 1;
-    let date = newDate.getDate();
-    if (date.toString().length < 2) {
-      date = '0' + date
-    }
-    if (month.toString().length < 2) {
-      month = '0' + month
-    }
-    return `${newDate.getFullYear()}/${month}/${date}`
-  }
 }
