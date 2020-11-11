@@ -19,15 +19,11 @@
   </nav>
 
   <nav class="manager-nav-bar row-alignment hidden">
-    <section class="nav-search-bar">
+    <a href="#" id="room-statuses-nav">Room Statuses</a>
+    <a href="#" id="manage-bookings-nav">Manage Bookings</a>
+    <a href="#" id="log-out-nav">Log Out</a>
+    <section class="nav-search-bar" role="search">
       <input class="search-input" type="text" placeholder="Search Users">
-    </section>
-    <section class="dropdown dropdown-header-icon column-alignment">
-      <section class="dropdown-content column-alignment">
-        <a class="dropdown-item" id="room-statuses-nav">Room Statuses</a>
-        <a class="dropdown-item" id="manage-bookings-nav"> Manage Bookings</a>
-        <a class="dropdown-item" id="log-out-nav">Log Out</a>
-      </section>
     </section>
   </nav>
 
@@ -109,7 +105,7 @@
         <label class="user-input" for="user-name">User Name:</label>
         <input type="text" id="user-name" placeholder="" value="">
         <label class="user-input" for="password">Password:</label>
-        <input type="text" id="password" placeholder="" value="">
+        <input type="text"id="password" placeholder="" value="">
         <button class="login-button" type="submit">Log In</button>
       </section>
     </section>
@@ -122,14 +118,14 @@
             <section class="manager-data-title">
               Room Statuses
             </section>
-            <section class="manager-data row-alignment">
+            <section class="manager-data row-alignment" role="contentinfo">
             </section>
           </section>
         </section>
 
         <section class="hotel-stats-section">
           <section class="hotel-stats-block column-alignment">
-            <h4 class="data-title"> Data for Today</h4>
+            <title class="data-title" role="heading"> Data for Today</title>
             <article class="hotel-stats row-alignment">
               <u>Occupancy :</u>
               <a id="occupancy">
@@ -142,11 +138,11 @@
             </article>
             <section class="color-key column-alignment">
               <section class="key-label row-alignment">
-                <a class="available" id="green"> o </a>
+                <a class="available" role="contentinfo" id="green"> o </a>
                 <label for="available"><b>Available</b></label>
               </section>
               <section class="key-label row-alignment">
-                <a class="unavailable" id="red"> o </a>
+                <a class="unavailable" role="contentinfo" id="red"> o </a>
                 <label for="unavailable"><b>Unavailable</b></label>
               </section>
             </section>
@@ -156,7 +152,7 @@
         <section class="manage-bookings-section hidden">
           <section class="maanger-data-title manage-bookings-title">
           </section>
-          <form class="manage-bookings-form" action="index.html" method="post">
+          <form class="manage-bookings-form" role="form" action="index.html" method="post">
 
           </form>
         </section>
