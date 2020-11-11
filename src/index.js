@@ -1,95 +1,61 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
+import {
+  userLoginSection,
+  logInButton,
+  userNameInput,
+  passwordInput,
+  hotelMotto,
+  navBar,
+  logInNavLink,
+  logOutNavLink,
+  mainSection,
+  bookingSection,
+  checkInDate,
+  checkOutDate,
+  checkAvailabilityBttn,
+  managerMotto,
+  managerNavBar,
+  managerView,
+  managerDataBlock,
+  managerDataTitle,
+  managerData,
+  roomStatusesNavLink,
+  hotelStatsSection,
+  hotelStatsContainer,
+  occupancy,
+  revenue,
+  searchInput,
+  manageBookingsNavLink,
+  manageBookingsSection,
+  manageBookingsForm
+} from './classes/domObject';
 import {
   fetchData
 } from './classes/fetchData';
+
 import User from './classes/userRepo';
 import Manager from './classes/managerRepo';
 import Booking from './classes/bookingRepo';
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png';
-// import './images/palmys.jpg';
-// import 'audio.m4a';
+// import './images/audio.m4a';
+// audio.play();
 
-// console.log('This is the JavaScript entry file - your code begins here.');
-// console.log(fetchData.getUserData());
-// console.log(fetchData.getRoomData());
-// use .then to resolve the Promise
-// let userData = fetchData.getUserData().then(data => console.log("userData", data));
-
-// need to import your SCSS files in the JavaScript entry file (index.js)
-//for the styles to be applied to your HTML.
-//The example base.scss file has already been imported
-//in the JavaScript entry file as an example.
+let currentUser;
+let today = new Date().toLocaleDateString();
 
 
-// --- QUERY SELECTORS ---
-let userLoginSection = document.querySelector('.user-login-section');
-let logInButton = document.querySelector('.login-button');
-let userNameInput = document.querySelector('#user-name');
-let passwordInput = document.querySelector('#password');
 
-// let audio = new Audio('audio.m4a');
-let hotelMotto = document.querySelector('.motto');
-let navBar = document.querySelector('.nav-bar');
-let logInNavLink = document.querySelector('.log-in-link');
-let logOutNavLink = document.querySelector('#log-out-nav');
-let mainSection = document.querySelector('.main-section');
-
-let bookingSection = document.querySelector('.booking-section');
-let checkInDate = document.querySelector('input[id="check-in"]');
-let checkOutDate = document.querySelector('input[id="check-out"]');
-let checkAvailabilityBttn = document.querySelector('.check-availability-button');
-
-let managerMotto = document.querySelector('.manager-motto');
-let managerNavBar = document.querySelector('.manager-nav-bar');
-let managerView = document.querySelector('.manager-view');
-let managerDataBlock = document.querySelector('.manager-data-block');
-let managerDataTitle = document.querySelector('.manager-data-title');
-let managerData = document.querySelector('.manager-data');
-
-let roomStatusesNavLink = document.querySelector('#room-statuses-nav');
-// let roomStatusesSection = document.querySelector('.room-statuses-section');
-// let roomStatusesBlock = document.querySelector('.room-statuses-block');
-// let roomStatuses = document.querySelector('.room-statuses');
-
-let hotelStatsSection = document.querySelector('.hotel-stats-section');
-let hotelStatsContainer = document.querySelector('.hotel-stats-block');
-let occupancy = document.querySelector('#occupancy');
-let revenue = document.querySelector('#revenue');
-
-
-let customerHistoryNavLink = document.querySelector('#customer-history-nav');
-// let customerHistorySection = document.querySelector('.customer-history-section');
-// let customerHistoryBlock = document.querySelector('.customer-history-block');
-let searchInput = document.querySelector('.search-input');
-
-let manageBookingsNavLink = document.querySelector('#manage-bookings-nav');
-//let manageBookingsSection = document.querySelector('.manage-bookings-section');
-let manageBookingsForm = document.querySelector('.manage-bookings-form');
-
-// --- EVENT LISTENERS ---
-window.addEventListener("load", displayManagerPage);
+// --- EVENT LISTENERS: ---
+//window.addEventListener("load", displayManagerPage);
 logInNavLink.addEventListener('click', displayLogIn);
 logOutNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
-checkAvailabilityBttn.addEventListener('click', handleAvailableRoomsSection);
+checkAvailabilityBttn.addEventListener('click', checkAvailableRooms);
 
 roomStatusesNavLink.addEventListener('click', displayRoomStatuses);
-//customerHistoryNavLink.addEventListener('click', displayCustomerHistory);
 manageBookingsNavLink.addEventListener('click', displayManageBookings);
+searchInput.addEventListener('keyup', searchInputHandler);
 
-searchInput.addEventListener('click', extendSearchBar);
-searchInput.addEventListener('keydown', searchInputHandler);
-
-let manager = new Manager();
-let user = new User();
-// --- FUNCTIONS SECTION ---
-
-
-// ~*~*~ LOG-IN Functions ~*~*~
+// -*-~-*-~-*- LOG IN Functions: -*-~-*-~-*-
 function displayLogIn() {
   event.preventDefault();
   hideGuestPage();
@@ -105,16 +71,33 @@ function toggleLogOutNavLink() {
   logInNavLink.innerText === "Log In" ? logInNavLink.innerText === "Log Out" : logInNavLink.innerText = "Log In"
 }
 
+function matchGuestLogIn(guestName) {
+  fetchData.getUserData().then(data => {
+    data.find(user => {
+      let clonedInput = `customer${user.id}`;
+      if (guestName === clonedInput) {
+        // console.log('user', user);
+        return currentUser = new User(user)
+      }
+    })
+  });
+  displayUserName(currentUser)
+}
+
 function determineUserInput() {
-  if (userNameInput.value.includes("customer") && passwordInput.value === "overlook2020") { //"customer" + number/userId
-    //  let user  = new User();
+  let guestName = userNameInput.value;
+  let correctPassword = passwordInput.value = "overlook2020";
+  if (guestName.includes("customer") && passwordInput.value === "overlook2020") { //"customer" + number/userId
+    matchGuestLogIn(guestName);
     displayGuestPage();
     toggleLogOutNavLink();
-  } else if (userNameInput.value === "manager" && passwordInput.value === "overlook2020") {
+  } else if (userNameInput.value === "manager" && correctPassword) {
+    user = new Manager();
     displayManagerPage();
   } else {
     displayUserError()
   }
+  // setTimeout(clearUserLogIn, 2000);
 }
 
 function displayUserError() {
@@ -126,47 +109,83 @@ function clearUserLogIn() {
   passwordInput.value = "";
 }
 
-function displayUserName(userName) {
+function displayUserName(currentUser) {
   hotelMotto.innerText = "";
-  hotelMotel.insertAdjacentHTML('afterbegin', `
-  <i>Welcome ${userName}</i>
+  console.log(currentUser);
+  hotelMotto.insertAdjacentHTML('afterbegin', `
+  <i>Welcome ${currentUser['name']}</i>
   `)
 }
 
 
-// ~*~*~ MANAGER Functions ~*~*~
-
-// *~*~*SEARCH BAR Functions*~*~*
-function extendSearchBar() {
-  searchInput.classList.add('search-input--clicked');
+// -*-~-*-~-*- MANAGER Section: -*-~-*-~-*-
+function populateRoomData() {
+  managerData.innerText = "";
+  managerDataTitle.innerText = "";
+  managerDataTitle.innerText = "Room Statuses";
+  fetchData.getRoomData().then(data => data.forEach(room => {
+    managerData.insertAdjacentHTML('beforeend', `
+    <article class="data-container room column-alignment" id="${room.number}">
+      <a class="room-data" id="room-number"><u>Room #${room.number}</u></a>
+      <a class="room-data" id="room-type"><i>${room.roomType}</i></a>
+      <a class="room-data" id="bed-size"><b>${room.numBeds}</b> ${room.bedSize}-size bed(s)</a>
+      <a class="room-data" id="room-cost">$${room.costPerNight} / night </a>
+    </article>
+`)
+  }));
+  // calculateHotelStats();
 }
 
+function calculateHotelStats() {
+  // let userData = [];
+  // let bookingData = [];
+  // let roomData = [];
+  // fetchData.getBookingData().then(data => {
+  //   return bookingData.push(...data)
+  // });
+  // fetchData.getUserData().then(data => {
+  //   return userData.push(...data)
+  // });
+  // fetchData.getRoomData().then(data => {
+  //   return roomData.push(...data)
+  // });
+  // revenue.innerText = manager.totalRevenue(today);
+}
+
+
+// -*-~-*-~-*- SEARCH BAR / CUSTOMER HISTORY Functions: -*-~-*-~-*-
+
 function searchInputHandler(e) {
+  let searchEntry;
   if (searchInput.value !== undefined && e.key === 'Enter') {
-    let searchEntry = searchInput.value;
+    searchEntry = searchInput.value;
+    console.log("searchEntry", searchEntry);
     if (searchEntry.length !== 0) {
       // displaySearchResults();
       gatherSearchResults(searchEntry);
-      searchInput.innerHTML = "";
+      searchInput.value = "";
+    } else {
+      console.log(searchInput.value);
     }
-  } else {
-    console.log(searchInput.value);
   }
 }
 
 
-function gatherSearchResults(searchInput) {
-  // let userSearchResult = [];
-  // let capitalizeInput = searchInput[0].toUpperCase() + searchInput.substring(1);
-  // fetchData.getUserData().then(data => data.filter(user =>
-  //   //return user === capitalizeInput))
-  //   if (user.name.includes(capitalizeInput)) {
-  //     searchResults.push(user)
-  //     return populateCustomerHistory(userSearchResults);
-  //   }
-  // ))
+function gatherSearchResults(searchEntry) {
+  let userSearchResult = [];
+  let capitalizeInput = searchEntry[0].toUpperCase() + searchEntry.substring(1);
+  fetchData.getUserData().then(data => console.log(data));
+  fetchData.getUserData().then(data => data.filter(user => {
+    //return user === capitalizeInput))
+    // if (user.name.includes(capitalizeInput)) {
+    if (user.name === searchEntry) {
+      console.log(user);
+      userSearchResults.push(user);
+      console.log(userSearchResult);
+      return populateCustomerHistory(userSearchResults);
+    }
+  }))
 };
-
 
 function populateCustomerHistory(userSearchResults) {
   clearManagerData();
@@ -192,33 +211,23 @@ function populateCustomerHistory(userSearchResults) {
   })
 }
 
-function populateRoomData() {
-  managerData.innerText = "";
-  managerDataTitle.innerText = "";
-  managerDataTitle.innerText = "Room Statuses";
-  fetchData.getRoomData().then(data => data.forEach(room => {
-    managerData.insertAdjacentHTML('beforeend', `
-    <article class="data-container room column-alignment" id="${room.number}">
-      <a class="room-data" id="room-number"><u>Room #${room.number}</u></a>
-      <a class="room-data" id="room-type"><i>${room.roomType}</i></a>
-      <a class="room-data" id="bed-size"><b>${room.numBeds}</b> ${room.bedSize}-size bed(s)</a>
-      <a class="room-data" id="room-cost">$${room.costPerNight} / night </a>
-    </article>
-    `)
-  }));
+function displayBookingsForm() {
+
 }
 
+// -*-~-*-~-*- DISPLAY (x) MANAGER SECTION Functions: -*-~-*-~-*-
 
-// ~*~*~ DISPLAY SECTION Functions ~*~*~
-
-function clearManagerData(){
+function clearManagerData() {
   managerData.innerText = "";
   managerDataTitle.innerText = "";
   hotelStatsSection.classList.add('hidden');
 }
 
 function displayManageBookings() {
-  clearManagerData()
+  clearManagerData();
+  manageBookingsSection.classList.remove('hidden');
+  managerDataTitle.innerText = "";
+  managerDataTitle.innerText = "Manage Bookings";
 }
 
 
@@ -248,14 +257,13 @@ function hideManagerPage() {
 
 
 
-// ~*~*~ GUEST Functions ~*~*~
+// -*-~-*-~-*- GUEST Section: -*-~-*-~-*-
 function displayGuestPage() {
   userLoginSection.classList.add('hidden');
   hotelMotto.classList.remove('hidden');
   navBar.classList.remove('hidden');
   mainSection.classList.remove('hidden');
   bookingSection.classList.remove('hidden');
-  // audio.play();
 }
 
 function hideGuestPage() {
@@ -266,6 +274,10 @@ function hideGuestPage() {
   bookingSection.classList.add('hidden');
 }
 
+// -*-~-*-~-*- BOOK A ROOM Functions: -*-~-*-~-*-
+function displayAvailableRooms() {
+
+}
 
 function checkAvailableRooms() {
   console.log(checkInDate.value);
@@ -273,6 +285,6 @@ function checkAvailableRooms() {
   displayAvailableRooms();
 }
 
-function handleAvailableRoomsSection() {
-  checkAvailableRooms();
-}
+// function handleAvailableRoomsSection() {
+//   checkAvailableRooms();
+// }

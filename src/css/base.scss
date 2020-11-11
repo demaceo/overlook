@@ -281,6 +281,7 @@ input {
 
 .manager-data-title {
   font-size: 2em;
+  font-weight: bold;
 }
 
 .manager-data {
@@ -470,44 +471,29 @@ input {
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
 }
-// .nav-search-input {
-//   background-repeat: no-repeat;
-//   background-position-x: 96%;
-//   stroke-width: 1em;
-//   width: 240px;
-//   border-radius: 4px;
-//   padding: 0.2em 0.5em;
-//   background-size: 1.6em;
-//   background-position-y: center;
-//   transition: width 3s;
-//   font-size: 1em;
-// }
 
 .nav-search-bar {
   display: flex;
   align-content: baseline;
-  // justify-content: space-around;
-  // align-self: flex-start;
-  // width:30vw;
   margin-right: 40px;
 }
 
 .search-input {
   background-repeat: no-repeat;
-  // background-position-x: 98%;
+  background-position-x: 98%;
   stroke-width: 1em;
   width: 180px;
   border-radius: 4px;
-  // padding: 0.5em;
+  padding-left: 1em;
   background-size: 1.6em;
   background-position-y: center;
   // margin-top: 2vw;
   top: 0;
-  transition: width 0.5s;
-  // font-size: 1em;
+  transition: width .9s;
+  font-size: .8em;
 }
-.search-input--clicked {
-  width: 44vw;
+.search-input:hover {
+  width: 35vw;
 }
 
 // *************CUSTOMER HISTORY VIEW SECTION*****************
