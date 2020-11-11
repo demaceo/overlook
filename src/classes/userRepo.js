@@ -1,11 +1,11 @@
-import Booking from './Booking';
+import Booking from './bookingRepo';
 import {
   fetchData
 } from './fetchData';
 
 export default class User {
-  constructor(userData = {}) {
-  // constructor(userData) {
+  // constructor(userData = {}) {
+  constructor(userData) {
     this.id = userData.id || 666;
     this.name = userData.name || 'Manager';
   }
