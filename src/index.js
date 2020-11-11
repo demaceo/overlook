@@ -57,7 +57,7 @@ logInNavLink.addEventListener('click', displayLogIn);
 logOutNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
 checkAvailabilityBttn.addEventListener('click', checkAvailableRooms);
-managerData.addEventListener('click', showUserHistory);
+managerData.addEventListener('click', registerClickEvent);
 roomStatusesNavLink.addEventListener('click', displayRoomStatuses);
 manageBookingsNavLink.addEventListener('click', displayManageBookings);
 searchInput.addEventListener('keyup', searchInputHandler);
@@ -209,15 +209,23 @@ function populateCustomerHistory(searchResults) {
   })
 }
 
-function showUserHistory(searchResults) {
+function showUserHistory(clickedUser) {
+  let userBookings = clickedUser.viewMyBookings(bookingData);
+  let userGrandTotal = clickedUser.viewMyTotal(bookingData, roomData);
+  console.log(userBookings);
+  console.log(userGrandTotal);
+}
+
+function registerClickEvent(searchResults) {
   let clickedUserName = event.target.innerText;
   let clickedUser;
   userData.forEach(user => {
     if (user['name'] === clickedUserName) {
-      clickedUser = user
+      clickedUser = new User(user)
     };
   })
   console.log(clickedUser);
+  showUserHistory(clickedUser);
 }
 
 // -*-~-*-~-*- MANAGE BOOKINGS SECTION Functions: -*-~-*-~-*-
