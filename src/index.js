@@ -41,6 +41,7 @@ import Booking from './classes/bookingRepo';
 // audio.play();
 
 let currentUser;
+let clickedUser;
 let guest;
 let manager = new Manager();
 let booking;
@@ -53,7 +54,7 @@ let userNameBlock = document.querySelector('.user-history');
 
 
 // --- EVENT LISTENERS: ---
-window.addEventListener("load", displayManagerPage);
+//window.addEventListener("load", displayManagerPage);
 logInNavLink.addEventListener('click', displayLogIn);
 logOutNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
@@ -247,13 +248,34 @@ function registerClickEvent(searchResults) {
   });
 }
 
-// -*-~-*-~-*- MANAGE BOOKINGS SECTION Functions: -*-~-*-~-*-
+// -*-~-*-~-*- BOOKINGS SECTION Functions: -*-~-*-~-*-
 function displayBookingsForm() {
   manaageBookingsSection.classList.remove('hidden');
-  
 }
 
-// -*-~-*-~-*- DISPLAY (x) MANAGER SECTION Functions: -*-~-*-~-*-
+function updateAvailableRooms() {
+  // bookingData = fetchedData.getBookingData();
+  // bookingData.then(data => {
+  //   let booking = data['bookings']
+  // })
+  // .then(() =>
+    }
+
+function bookRoom(){
+
+}
+
+function manageBookings(){
+// let newBooking = manager.addCustomerBooking(userData, clickedUser['name'], )
+}
+
+function cancelBoooking(){
+  // let bookingId;
+  // let deleteBooking = manager.deleteCustomerBooking(bookingData, bookingId)''
+
+}
+
+// -*-~-*-~-*- DISPLAY (x)MANAGER SECTION Functions: -*-~-*-~-*-
 
 function clearManagerData() {
   managerData.innerText = "";
