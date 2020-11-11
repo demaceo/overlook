@@ -30,11 +30,10 @@ export default class User {
   viewMyTotal(bookingData, roomData) {
     let grandTotal = this.viewMyBookings(bookingData).reduce((myGrandTotal, myBooking) => {
       let matchedRoom = roomData.find(room => room.number === myBooking.roomNumber);
-      myGrandTotal += matchedRoom.costPerNight
+      myGrandTotal += matchedRoom.costPerNight;
       return myGrandTotal;
     }, 0).toFixed(2);
     return Number(grandTotal)
-
   }
 
   viewUnavailableRooms(bookingData, roomData, date) {
@@ -47,7 +46,7 @@ export default class User {
   }
 
   viewAvailableRooms(bookingData, roomData, date) {
-    let unavailableRooms = this.viewUnavailableRooms(bookingData, roomData, date)
+    let unavailableRooms = this.viewUnavailableRooms(bookingData, roomData, date);
     return roomData.filter(room => !unavailableRooms.includes(room))
   }
 
