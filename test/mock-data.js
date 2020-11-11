@@ -120,6 +120,6 @@ export const roomMockData = [
     bidet: true,
     bedSize: "king",
     numBeds: 2,
-    costPerNight: 200.10
+    costPerNight: 200.11
   },
 ];

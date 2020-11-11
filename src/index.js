@@ -137,8 +137,6 @@ function populateRoomData() {
   managerDataTitle.innerText = "";
   managerDataTitle.innerText = "Room Details";
   fetchData.getRoomData().then(data => data.forEach(room => {
-    // manager.viewAvailableRooms(bookingData, roomData, today)
-    // .then(data => { return data.forEach(room => {
     managerData.insertAdjacentHTML('beforeend', `
     <article class="data-container room column-alignment" id="${room.number}">
       <a class="room-data" id="room-number"><u>Room #${room.number}</u></a>
@@ -290,7 +288,6 @@ function displayManageBookings() {
   bookingSection.classList.remove('hidden');
 }
 
-
 function displayRoomStatuses() {
   clearManagerData();
   populateRoomData();
@@ -316,8 +313,6 @@ function hideManagerPage() {
   hotelStatsSection.classList.add('hidden');
   deleteBookingSection.classList.add('hidden');
 }
-
-
 
 // -*-~-*-~-*- GUEST Section: -*-~-*-~-*-
 function displayGuestPage() {
@@ -386,14 +381,14 @@ function displayAvailableRooms(date) {
 }
 
 function checkAvailableRooms() {
-  if (logOutNavLink.innerText === "Log Out" && logInNavLink.innerText === "Log Out") {
+  // if (logOutNavLink.innerText === "Log Out" || logInNavLink.innerText === "Log Out") {
     mainSection.classList.add('hidden');
     managerView.classList.remove('hidden');
     hotelStatsSection.classList.add('hidden');
     selectDate = checkInDate.value.replaceAll('-', '/');
     if (selectDate >= today) {
       displayAvailableRooms(selectDate)
-    }
+    // }
   }
 }
 
