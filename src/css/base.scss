@@ -1,11 +1,4 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-// * {
-//   border: solid 0.1px;
-// }
-// $primary-background: radial-gradient(circle, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 1%);
-// $palmys: url(./images/palmys.jpg);
 $ice-blue: #D7DFE0;
-// $user-icon: url('../images/user-clear-circle.svg');
 
 html {
   // height: 100vh;
@@ -18,13 +11,11 @@ html {
 .column-alignment {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
 }
 
 .row-alignment {
   display: flex;
   flex-direction: row;
-  // justify-content: center;
 }
 
 body {
@@ -32,13 +23,13 @@ body {
   height: 100vh;
   width: 100vw;
 }
+
 // *************HEADER SECTION*****************
 
 header {
   justify-content: center;
   align-content: baseline;
   background-color: teal;
-  // border-width: thick;
   width: 100vw;
   height: 30vh;
   align-items: center;
@@ -67,11 +58,9 @@ nav {
   position: sticky;
   top: 0;
   box-shadow: 0 6px 12px 0 #0000003d;
-  // width: 100vw;
   z-index: 10px;
   height: 2em;
-  // padding: 20px;
-  padding: 20px 0;
+  padding-top: 25px;
 }
 
 .nav-links {
@@ -84,25 +73,14 @@ main {
   // height:100%;
   // width: 100%;
 }
-// .log-in-link{
-//   align-items:center;
-//   background-color: white;
-//   width: 100px;
-//   height: 30px;
-//   padding: 10px;
-//   font-style: oblique;
-//   position: absolute;
-//   top: 10px;
-// }
+
 
 article {
   padding: 10px;
   font-size: 2em;
   width: 10vw;
 }
-// img {
-//   display:
-// }
+
 // *************HOME PAGE SECTION*****************
 
 h3 {
@@ -127,10 +105,8 @@ h3 {
 .main-content {
   overflow: hidden;
   justify-content: space-around;
-  // margin-top: 0;
   margin-bottom: 5vh;
   margin-left: 2vw;
-  // padding-right: 50px;
   height: 100%;
   padding: 5vh;
 }
@@ -205,10 +181,10 @@ h3 {
 
 h4 {
   align-self: center;
-  font-size: 2em;
-  color: white;
+  font-size: 1.8em;
+  color: black;
   padding: 15px;
-  background-color: red;
+  background-color: $ice-blue;
   font-style: italic;
   margin-bottom: 15px;
 }
@@ -228,6 +204,9 @@ label {
   padding: 12px;
   border-width: medium;
 }
+
+
+
 // *************USER LOG IN SECTION*****************
 
 .user-login-section {
@@ -261,6 +240,8 @@ input {
   padding: 10px;
   border-width: medium;
 }
+
+
 // *************MANAGER VIEW SECTION*****************
 
 .manager-view {}
@@ -316,41 +297,14 @@ input {
   font-family: "Gill Sans", sans-serif;
 }
 
-// .room-statuses {
-//   justify-content: space-around;
-//   width: 100%;
-//   flex-wrap: wrap;
-// }
-
-// .room {
-//   min-width: 12vw;
-//   width: auto;
-//   height: auto;
-//   border-radius: 10%;
-//   margin-top: 2em;
-//   min-height: 13vh;
-//   padding: 10px;
-//   border: 1.5px solid;
-//   justify-content: space-around;
-//   align-items: center;
-//   transition: all 0.2s ease-in-out;
-// }
-
-
-
 #room-number {
   font-size: 0.8em;
 }
 
-// #room-type {}
-// 
-// #bed-count {}
-//
-// #bed-size {}
-
 #room-cost {
   font-size: 0.7em;
 }
+
 // *************HOTEL DATA VIEW SECTION*****************
 
 .hotel-stats-section {
@@ -377,7 +331,6 @@ input {
   background-color: white;
   justify-content: space-around;
 }
-// .revenue-data {}
 
 .color-key {
   background-color: white;
@@ -404,77 +357,55 @@ input {
 // *************NAV BAR SECTION*****************
 
 .manager-nav-bar {
-  justify-content: flex-end;
-
-}
-.dropdown-header-icon {
-  // margin-top: 5px;
-  align-self: center;
-  background: url('../images/user-clear-circle.svg');
-  font-size: .8em;
-  background-repeat: no-repeat;
-  width: 15px;
-  margin-right: 30px;
+  justify-content: space-around
 }
 
-.dropdown {
-  padding: 10px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  right: 1px;
-  z-index: 1;
-}
-
-.dropdown-icons {
-  // width: 5px;
-  justify-content: space-around;
-}
-
-// .dropdown-item {
+// .dropdown-header-icon {
+//   // margin-top: 5px;
+//   align-self: center;
+//   background: url('../images/user-clear-circle.svg');
 //   font-size: .8em;
-// }
-
-// #room-statuses-nav{
-//   background: url('../images/wizard.svg');
 //   background-repeat: no-repeat;
-// }
-// #manage-bookings-nav{
-//   background: url('../images/dollar.svg');
-//   background-repeat: no-repeat;
-// }
-// #log-out-nav{
-//   background: url('../images/peace.svg');
-//   background-repeat: no-repeat;
+//   width: 15px;
+//   margin-right: 30px;
 // }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 12px;
-  text-decoration: none;
-  display: block;
-}
+// .dropdown {
+//   padding: 10px;
+// }
+//
+// .dropdown-content {
+//   display: none;
+//   position: absolute;
+//   background-color: #f1f1f1;
+//   min-width: 160px;
+//   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+//   right: 1px;
+//   z-index: 1;
+// }
 
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background-color: #3e8e41;
-}
+// .dropdown-content a {
+//   color: black;
+//   padding: 12px 12px;
+//   text-decoration: none;
+//   display: block;
+// }
+//
+// .dropdown-content a:hover {
+//   background-color: #ddd;
+// }
+//
+// .dropdown:hover .dropdown-content {
+//   display: block;
+// }
+//
+// .dropdown:hover .dropbtn {
+//   background-color: #3e8e41;
+// }
 
 .nav-search-bar {
   display: flex;
-  align-content: baseline;
+  // align-content: baseline;
   margin-right: 40px;
 }
 
