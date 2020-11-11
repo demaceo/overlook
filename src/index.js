@@ -48,6 +48,7 @@ let bookingData = [];
 let roomData = [];
 let today = new Date().toLocaleDateString();
 
+let userNameBlock = document.querySelector('.user-history');
 
 
 // --- EVENT LISTENERS: ---
@@ -56,7 +57,7 @@ logInNavLink.addEventListener('click', displayLogIn);
 logOutNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
 checkAvailabilityBttn.addEventListener('click', checkAvailableRooms);
-
+managerData.addEventListener('click', showUserHistory);
 roomStatusesNavLink.addEventListener('click', displayRoomStatuses);
 manageBookingsNavLink.addEventListener('click', displayManageBookings);
 searchInput.addEventListener('keyup', searchInputHandler);
@@ -142,14 +143,14 @@ function populateRoomData() {
 function collectData() {
   fetchData.getBookingData().then(data => {
     return data.forEach(bookingLog => {
-        Promise.resolve(data)
-          .then(data => bookingData.push(bookingLog))
+      Promise.resolve(data)
+        .then(data => bookingData.push(bookingLog))
     })
   });
   fetchData.getRoomData().then(data => {
     return data.forEach(room => {
       Promise.resolve(data)
-      .then(data => roomData.push(room))
+        .then(data => roomData.push(room))
     })
   });
 }
@@ -175,33 +176,48 @@ function searchInputHandler(e) {
 }
 
 function gatherSearchResults(searchEntry) {
-  let searchResults = [];
+  // let searchResults = [];
   let lowerCaseSearchEntry = searchEntry.toLowerCase();
   fetchData.getUserData().then(data => {
       return data.filter(user => {
         let userName = `${user['name'].toLowerCase()}`;
         if (userName.includes(lowerCaseSearchEntry)) {
-          searchResults.push(user);
+          userData.push(user);
           Promise.resolve(user)
             .then(user => guest = new User(user))
         }
       })
     })
-    .then(data => populateCustomerHistory(searchResults));
+    .then(data => populateCustomerHistory(userData));
+  showUserHistory(userData)
 }
 
 function populateCustomerHistory(searchResults) {
   clearManagerData();
+  let sortedSearchResults = searchResults.sort((a, b) => {
+    return a.name > b.name ? 1 : -1
+  });
+  console.log(sortedSearchResults);
   managerData.innerText = "";
   managerDataTitle.innerText = "Customer History";
-  //fetchData.getUserData().then(data => data.forEach(user => {
-  searchResults.forEach(user => {
+  sortedSearchResults.forEach(user => {
     managerData.insertAdjacentHTML('beforeend', `
     <article class="user-history data-container column-alignment" id=${user.id}>
       <a class="user-name">${user.name}</a>
     </article>
     `)
   })
+}
+
+function showUserHistory(searchResults) {
+  let clickedUserName = event.target.innerText;
+  let clickedUser;
+  userData.forEach(user => {
+    if (user['name'] === clickedUserName) {
+      clickedUser = user
+    };
+  })
+  console.log(clickedUser);
 }
 
 // -*-~-*-~-*- MANAGE BOOKINGS SECTION Functions: -*-~-*-~-*-
