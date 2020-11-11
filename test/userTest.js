@@ -63,14 +63,16 @@ describe('User class properties and methods', function() {
   });
 
   it('should be able to find available rooms by date', function() {
-    console.log(user1.viewAvailableRooms(bookingData, roomData, "2021/02/06"));
-    expect(user1.viewAvailableRooms(bookingData, roomData, "2021/02/06").length).to.equal(3);
+    let x = user1.viewAvailableRooms(bookingData, roomData, "2021/02/06").length;
+    expect(x).to.equal(3);
     // expect(user1.viewAvailableRooms(bookingData, roomData, "2021/02/06")[0]).to.deep.equal(roomMockData[1]);
   });
 
   it('should be able to filter available rooms by type of room', function() {
-    expect(user1.viewAvailableRoomsByType(bookingData, roomData, "2021/02/06", 'junior suite')[0].roomType).to.equal('junior suite');
-    expect(user1.viewAvailableRoomsByType(bookingData, roomData, "2021/02/06", 'junior suite').length).to.equal(1);
+    let x = user1.viewAvailableRoomsByType(bookingData, roomData, "2021/02/06", 'junior suite')[0].roomType;
+    let z = user1.viewAvailableRoomsByType(bookingData, roomData, "2021/02/06", 'junior suite').length;
+    expect(x).to.equal('junior suite');
+    expect(z).to.equal(1);
   });
 
   it.only('should be able to book a room', function() {

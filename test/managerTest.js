@@ -5,7 +5,6 @@ chai.use(spies);
 
 import User from '../src/classes/userRepo';
 import Manager from '../src/classes/managerRepo';
-import Booking from '../src/classes/bookingRepo';
 import {
   fetchData
 } from '../src/classes/fetchData';
@@ -43,7 +42,8 @@ describe.skip('Manager class properties and methods', function() {
   });
 
   it('should show total rooms available by date', function() {
-    expect(manager.totalAvailableRooms(bookingData, roomData, "2022/04/21")).to.equal(4);
+    let x = manager.totalAvailableRooms(bookingData, roomData, "2022/04/21");
+    expect(x).to.equal(4);
   });
 
   it('should return total revenue from today\'s bookings', function() {
@@ -51,7 +51,8 @@ describe.skip('Manager class properties and methods', function() {
   });
 
   it('should return percent of occupied rooms for given date', function() {
-    expect(manager.totalPercentOccupied(bookingData, roomData, "2021/01/01")).to.equal((.50).toFixed(2));
+    let x = manager.totalPercentOccupied(bookingData, roomData, "2021/01/01");
+    expect(x).to.equal((.50).toFixed(2));
   });
 
   it('should be able to find a User class object by name', function() {

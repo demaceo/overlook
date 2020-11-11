@@ -1,16 +1,16 @@
 export const userMockData = [
   {
-    id:20,
-    name:"Doodle Bob"
+    id: 20,
+    name: "Doodle Bob"
   },
 
   {
-    id:70,
-    name:"Lord Farquad"
+    id: 70,
+    name: "Lord Farquad"
   },
   {
     id: "",
-    name:""
+    name: ""
   }
 ];
 
@@ -91,35 +91,35 @@ export const bookingMockData = [
 
 export const roomMockData = [
   {
-    number:6,
-    roomType:"residential suite",
-    bidet:true,
-    bedSize:"queen",
-    numBeds:1,
-    costPerNight:350.75
+    number: 6,
+    roomType: "residential suite",
+    bidet: true,
+    bedSize: "queen",
+    numBeds: 1,
+    costPerNight: 350.75
   },
   {
-    number:9,
-    roomType:"junior suite",
-    bidet:false,
-    bedSize:"queen",
-    numBeds:1,
-    costPerNight:270.00
+    number: 9,
+    roomType: "junior suite",
+    bidet: false,
+    bedSize: "queen",
+    numBeds: 1,
+    costPerNight: 270.00
   },
   {
-    number:1,
-    roomType:"single room",
-    bidet:false,
-    bedSize:"twin",
-    numBeds:1,
-    costPerNight:172.6
+    number: 1,
+    roomType: "single room",
+    bidet: false,
+    bedSize: "twin",
+    numBeds: 1,
+    costPerNight: 172.6
   },
   {
-    number:2,
-    roomType:"suite",
-    bidet:true,
-    bedSize:"king",
-    numBeds:2,
-    costPerNight:200.10
+    number: 2,
+    roomType: "suite",
+    bidet: true,
+    bedSize: "king",
+    numBeds: 2,
+    costPerNight: 200.10
   },
 ];
