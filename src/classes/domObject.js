@@ -20,6 +20,7 @@ export const managerData = document.querySelector('.manager-data');
 export const roomStatusesNavLink = document.querySelector('#room-statuses-nav');
 export const hotelStatsSection = document.querySelector('.hotel-stats-section');
 export const hotelStatsContainer = document.querySelector('.hotel-stats-block');
+export const dataTitle = document.querySelector('.data-title');
 export const occupancy = document.querySelector('#occupancy');
 export const revenue = document.querySelector('#revenue');
 //export const customerHistorySection = document.querySelector('.customer-history-section');
