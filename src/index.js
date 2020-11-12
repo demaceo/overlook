@@ -7,6 +7,8 @@ import {
   hotelMotto,
   navBar,
   logInNavLink,
+  amenitiesNavLink,
+  contactNavLink,
   homeNavLink,
   logOutNavLink,
   bookRoomNavLink,
@@ -36,7 +38,9 @@ import {
   searchInput,
   manageBookingsNavLink,
   manageBookingsSection,
-  manageBookingsForm
+  manageBookingsForm,
+  userBookingsSection,
+  userBookingsTableInfo
 } from './classes/domObject';
 import {
   fetchData
@@ -65,6 +69,8 @@ let userNameBlock = document.querySelector('.user-history');
 // --- EVENT LISTENERS: ---
 window.addEventListener("load", calculateTodaysStats);
 homeNavLink.addEventListener('click', displayGuestPage);
+amenitiesNavLink.addEventListener('click', displayGuestPage);
+contactNavLink.addEventListener('click', displayGuestPage);
 logInNavLink.addEventListener('click', displayLogIn);
 logOutNavLink.addEventListener('click', displayLogIn);
 logInButton.addEventListener('click', determineUserInput);
@@ -105,6 +111,12 @@ function collectData() {
         .then(data => roomData.push(room))
     })
   });
+  fetchData.getUserData().then(data => {
+    return data.forEach(user => {
+      Promise.resolve(data)
+        .then(data => userData.push(user))
+    })
+  });
 }
 
 
@@ -129,27 +141,26 @@ function displayUserError() {
 
 function displayUserName() {
   hotelMotto.innerText = `Welcome ${guest['name']}`;
-  guest = new User(guest);
-  collectUserHistory(guest)
+  currentUser = new User(guest);
+  collectUserHistory(currentUser)
 }
 
 function matchGuestLogIn(guestName) {
   fetchData.getUserData().then(data => {
-    return data.find(user => {
-      let clonedInput = `customer${user.id}`;
-      if (guestName === clonedInput) {
-        Promise.resolve(user)
-          .then(user => guest = new User(user))
-      }
+      return data.find(user => {
+        let clonedInput = `customer${user.id}`;
+        if (guestName === clonedInput) {
+          Promise.resolve(user)
+            .then(user => guest = new User(user))
+        }
+      })
     })
-  })
-  .then(data => displayUserName());
+    .then(data => displayUserName());
 }
 
 function displayUserData() {
   mainSection.classList.add('hidden');
   managerView.classList.remove('hidden');
-  // gatherSearchResults(guest['name']);
 }
 
 function determineUserInput() {
@@ -192,9 +203,9 @@ function populateRoomData() {
 
 function calculateTodaysStats() {
   collectData();
-  let totalAvailableRooms = manager.totalAvailableRooms(bookingData, roomData, "2020/11/11");
-  let totalRevenue = manager.totalRevenue(bookingData, roomData, "2020/11/11");
-  let totalOccupancy = manager.totalPercentOccupied(bookingData, roomData, "2020/11/11");
+  let totalAvailableRooms = manager.totalAvailableRooms(bookingData, roomData, today);
+  let totalRevenue = manager.totalRevenue(bookingData, roomData, today);
+  let totalOccupancy = manager.totalPercentOccupied(bookingData, roomData, today);
   dataTitle.innerText = `${today} Stats:`;
   availableRooms.innerText = `${totalAvailableRooms}`;
   occupancy.innerText = `%${totalOccupancy}`;
@@ -203,7 +214,6 @@ function calculateTodaysStats() {
 
 
 // -*-~-*-~-*- SEARCH BAR / CUSTOMER HISTORY Functions: -*-~-*-~-*-
-
 function searchInputHandler(e) {
   if (searchInput.value !== undefined && e.key === 'Enter') {
     let searchEntry = searchInput.value;
@@ -246,28 +256,30 @@ function populateCustomerHistory(searchResults) {
   })
 }
 
-function displayUserHistory(clickedUser, grandTotal, bookingDates) {
+function displayUserHistory(user, grandTotal, userBookings) {
   managerData.innerText = "";
-  managerDataTitle.innerText = `${clickedUser['name']}'s History`;
+  managerDataTitle.innerText = `${user['name']}'s History`;
   managerData.classList.remove('row-alignment');
   managerData.classList.add('column-alignment');
   managerData.insertAdjacentHTML('beforeend', `
-  <article class="clickedUser-grandTotal">Total Amount Spent: $${grandTotal}</article>
+  <article class="user-grandTotal">Total Amount Spent: $${grandTotal}</article>
   `);
-  bookingDates.forEach(date => {
+  userBookings.forEach(booking => {
     managerData.insertAdjacentHTML('beforeend', `
-  <article class="clickedUser-booking">${date}</article>
+  <article class="user-booking-info">
+  <p><u>Room #${booking.roomNumber}</u> on ${booking['date']} </p>
+  </article>
   `)
   })
 }
 
-function collectUserHistory(clickedUser) {
-  let userBookings = clickedUser.viewMyBookings(bookingData);
-  let userGrandTotal = clickedUser.viewMyTotal(bookingData, roomData);
+function collectUserHistory(user) {
+  let userBookings = user.viewMyBookings(bookingData);
+  let userGrandTotal = user.viewMyTotal(bookingData, roomData);
   let bookingDates = userBookings.map(booking => {
     return booking['date']
   });
-  displayUserHistory(clickedUser, userGrandTotal, bookingDates);
+  displayUserHistory(user, userGrandTotal, userBookings);
 }
 
 function registerClickEvent(searchResults) {
@@ -378,8 +390,11 @@ function deleteBooking() {
 }
 
 function displayAvailableRooms(date) {
+  managerData.classList.add('row-alignment');
+  managerData.classList.remove('column-alignment');
   let availableRooms = manager.viewAvailableRooms(bookingData, roomData, date);
   managerData.innerHTML = "";
+  managerDataTitle.innerText = `Available Rooms for ${date}`;
   availableRooms.forEach(room => {
     managerData.insertAdjacentHTML('beforeend', `
     <article class="data-container room column-alignment" id=${room.number}>
@@ -393,12 +408,13 @@ function displayAvailableRooms(date) {
 }
 
 function checkAvailableRooms() {
-  // if (logOutNavLink.innerText === "Log Out" || logInNavLink.innerText === "Log Out") {
-  mainSection.classList.add('hidden');
-  managerView.classList.remove('hidden');
-  hotelStatsSection.classList.add('hidden');
-  selectDate = checkInDate.value.replaceAll('-', '/');
-  if (selectDate >= today) {
-    displayAvailableRooms(selectDate)
+  if (checkInDate.value) {
+    mainSection.classList.add('hidden');
+    managerView.classList.remove('hidden');
+    hotelStatsSection.classList.add('hidden');
+    selectDate = checkInDate.value.replaceAll('-', '/');
+    if (selectDate >= today) {
+      displayAvailableRooms(selectDate)
+    }
   }
 }
