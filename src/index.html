@@ -1,154 +1,154 @@
-<!DOCTYPE html>
-<html lang="en-US">
+  <!DOCTYPE html>
+  <html lang="en-US">
 
-<head>
-  <title>Hotel California</title>
-</head>
+  <head>
+    <title>Hotel California</title>
+  </head>
 
-<body>
-  <header class="column-alignment">
-    <h1 class="hotel-title">Hotel California</h1>
-    <h2 class="hotel-title motto"> <i>Where class meets luxury</i></h2>
-    <h2 class="hotel-title manager-motto hidden"> <i>Manager View</i></h2>
-  </header>
-  <nav class="nav-bar row-alignment">
-    <a class="home-nav-link" href="#">Home</a>
-    <a class="home-nav-link" href="#amenities">Amenities</a>
-    <a class="home-nav-link" href="#contact-us">Contact Us</a>
-    <a class="book-room-link" href="#">Book Room</a>
-    <a class="log-in-link" href="#">Log In</a>
-  </nav>
+  <body>
+    <header class="column-alignment">
+      <h1 class="hotel-title">Hotel California</h1>
+      <h2 class="hotel-title motto"> <i>Where class meets luxury</i></h2>
+      <h2 class="hotel-title manager-motto hidden"> <i>Manager View</i></h2>
+    </header>
+    <nav class="nav-bar row-alignment">
+      <a class="home-nav-link" href="#">Home</a>
+      <a class="amenities-nav-link" href="#amenities">Amenities</a>
+      <a class="contact-nav-link" href="#contact-us">Contact Us</a>
+      <a class="book-room-link" href="#">Book Room</a>
+      <a class="log-in-link" href="#">Log In</a>
+    </nav>
 
-  <nav class="manager-nav-bar row-alignment hidden">
-    <a href="#" id="room-statuses-nav">Room Details</a>
-    <a href="#" id="manage-bookings-nav">Manage Bookings</a>
-    <a href="#" id="log-out-nav">Log Out</a>
-    <section class="nav-search-bar" role="search">
-      <input class="search-input" type="text" placeholder="Search Users">
-    </section>
-  </nav>
-
-  <main class="hotel-california row-alignment">
-    <section class="main-section column-alignment">
-      <section class="main-content column-alignment">
-        <section class="main-content-block" id="about-us">
-          <section class="main-content-title">
-            <b>About Us</b>
-          </section>
-          <p class="main-content-description">
-            Hotel California provides guests with a beautiful place to stay, travel, and work abroad indefinitely.
-            We use our in-depth local knowledge to offer a range of unique and authentic experiences.
-            From the center of the city to the breathtaking national parks, we put our heart, soul, and wanderlust into providing
-            families, travelers, and friends with a new and exciting way to explore the land we know and love.
-          </p>
-        </section>
-        <label id="amenities"></label>
-        <h3 class='content-title-title'>Why Hotel California?</h3>
-        <section class="main-content-block">
-          <section class="main-content-title">
-            <b>Amenities</b>
-          </section>
-          <p class="main-content-description">
-            <br>Choose from one of our many fully furbished and newly remodeled rooms.
-            Our selection includes single rooms, suites, junior suites, and residential suites.<br>
-            <br><u>Each boudoir includes:</u>
-            <br>• Your selection of a double, queen or king size bed with satin sheets that are sewn right before your check-in
-            <br>• Premium high-speed internet sent down your personal SpaceX satellite
-            <br>• An 80" HD TV with millions of stations from around the globe
-            <br>• A Gordon Ramsay-approved marble kitchen with cookware
-            <br>• A personal safe with customizable lock code provided by Warren Buffet
-            <br>• A diamond-encrusted shower bath that rains down purified drinkable water directly from Fiji
-            <br><br>Depening on your selection, your room may also even include a low-rise waterfountain (aka bidet) located in the restroom.
-            <br><br>Cost per night starting at <b>$172</b>. Book now for an unforgettable experience!
-          </p>
-        </section>
-        <section class="main-content-block" id="services">
-          <section class="main-content-title">
-            <b>Services</b>
-          </section>
-          <p class="main-content-description">
-            Given COVID-19, we adjusted our services so that we may still provide the best possible experience to our guests.
-            <br><br>The gym, pool, sauna, yoga studio, meditation garden, ballroom, bar, and public kitchen are still available for a limited number of guests at a time.
-            <i>Speak with the concierge at the front desk for further details and slot reservations.</i>
-            <br><br>We understand that this may be an inconvenience to our guests so, as a way to further compensate for these unprecedented times,
-            we now offer remote cooking classes and <a href="https://demaceo.github.io/intention-timer/">Guided Meditations</a> completely free of charge!
-            <br><br>Each activity is scheduled every Monday, Wednesday, and Thursday at noon and again at 5:30pm.
-            Guests can attend by either reserving a spot at our public kitchen or by simply viewing our live channel (<b>#402</b> for Cooking, <b>#503</b> for Meditation) at the schdeuled time.
-            View <a href="https://demaceo.github.io/whats-cookin/">What's Cookin'</a> to get the featured recipe of the day!
-          </p>
-        </section>
-        <section class="main-content-block" id="contact-us">
-          <section class="main-content-title">
-            <b>Contact Us</b>
-          </section>
-          <p class="main-content-description">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            <br> Aenean commodo ligula eget dolor.<br> Call us at: <b>(678) 999-8212</b></p>
-        </section>
+    <nav class="manager-nav-bar row-alignment hidden">
+      <a href="#" id="room-statuses-nav">Room Details</a>
+      <a href="#" id="manage-bookings-nav">Manage Bookings</a>
+      <a href="#" id="log-out-nav">Log Out</a>
+      <section class="nav-search-bar" role="search">
+        <input class="search-input" type="text" placeholder="Search Users">
       </section>
-    </section>
+    </nav>
 
-    <section class="booking-section">
-      <section class="booking-form column-alignment">
-        <h4>GET A ROOM</h4>
-        <article class="booking-input column-alignment">
-          <label for="check-in"><b><u>Check-In:</u></b></label>
-          <input type="date" id="check-in" name="trip-start" value="" min="2018-01-01" max="2025-12-31">
-        </article>
-        <button class="check-availability-button row-alignment" type="button" name="button">Check Availability</button>
-      </section>
-      <section class="delete-booking-form column-alignment hidden">
-        <h4>DELETE BOOKING</h4>
-        <article class="booking-input column-alignment">
-          <!-- <label for="delete-booking"><b><u>Booking ID #</u></b></label> -->
-          <input class="delete-booking-input" id="delete-booking" type="text" placeholder="insert Booking ID#" value="">
-        </article>
-        <button class="delete-booking-button row-alignment" type="button" name="button">Delete</button>
-      </section>
-    </section>
-
-    <section class="user-login-section row-alignment hidden">
-      <section class="user-login-block column-alignment">
-        <label class="user-input" for="user-name">User Name:</label>
-        <input type="text" id="user-name" placeholder="" value="">
-        <label class="user-input" for="password">Password:</label>
-        <input type="text"id="password" placeholder="" value="">
-        <button class="login-button" type="submit">Log In</button>
-      </section>
-    </section>
-
-    <section class="manager-view row-alignment hidden">
-      <section class="manager-block-info row-alignment">
-
-        <section class="manager-data-section">
-          <section class="manager-data-block column-alignment">
-            <section class="manager-data-title">
-              ROOM DETAILS
+    <main class="hotel-california row-alignment">
+      <section class="main-section column-alignment">
+        <section class="main-content column-alignment">
+          <section class="main-content-block" id="about-us">
+            <section class="main-content-title">
+              <b>About Us</b>
             </section>
-            <section class="manager-data row-alignment" role="contentinfo">
+            <p class="main-content-description">
+              Hotel California provides guests with a beautiful place to stay, travel, and work abroad indefinitely.
+              We use our in-depth local knowledge to offer a range of unique and authentic experiences.
+              From the center of the city to the breathtaking national parks, we put our heart, soul, and wanderlust into providing
+              families, travelers, and friends with a new and exciting way to explore the land we know and love.
+            </p>
+          </section>
+          <label id="amenities"></label>
+          <h3 class='content-title-title'>Why Hotel California?</h3>
+          <section class="main-content-block">
+            <section class="main-content-title">
+              <b>Amenities</b>
             </section>
+            <p class="main-content-description">
+              <br>Choose from one of our many fully furbished and newly remodeled rooms.
+              Our selection includes single rooms, suites, junior suites, and residential suites.<br>
+              <br><u>Each boudoir includes:</u>
+              <br>• Your selection of a double, queen or king size bed with satin sheets that are sewn right before your check-in
+              <br>• Premium high-speed internet sent down your personal SpaceX satellite
+              <br>• An 80" HD TV with millions of stations from around the globe
+              <br>• A Gordon Ramsay-approved marble kitchen with cookware
+              <br>• A personal safe with customizable lock code provided by Warren Buffet
+              <br>• A diamond-encrusted shower bath that rains down purified drinkable water directly from Fiji
+              <br><br>Depening on your selection, your room may also even include a low-rise waterfountain (aka bidet) located in the restroom.
+              <br><br>Cost per night starting at <b>$172</b>. Book now for an unforgettable experience!
+            </p>
+          </section>
+          <section class="main-content-block" id="services">
+            <section class="main-content-title">
+              <b>Services</b>
+            </section>
+            <p class="main-content-description">
+              Given COVID-19, we adjusted our services so that we may still provide the best possible experience to our guests.
+              <br><br>The gym, pool, sauna, yoga studio, meditation garden, ballroom, bar, and public kitchen are still available for a limited number of guests at a time.
+              <i>Speak with the concierge at the front desk for further details and slot reservations.</i>
+              <br><br>We understand that this may be an inconvenience to our guests so, as a way to further compensate for these unprecedented times,
+              we now offer remote cooking classes and <a href="https://demaceo.github.io/intention-timer/">Guided Meditations</a> completely free of charge!
+              <br><br>Each activity is scheduled every Monday, Wednesday, and Thursday at noon and again at 5:30pm.
+              Guests can attend by either reserving a spot at our public kitchen or by simply viewing our live channel (<b>#402</b> for Cooking, <b>#503</b> for Meditation) at the schdeuled time.
+              View <a href="https://demaceo.github.io/whats-cookin/">What's Cookin'</a> to get the featured recipe of the day!
+            </p>
+          </section>
+          <section class="main-content-block" id="contact-us">
+            <section class="main-content-title">
+              <b>Contact Us</b>
+            </section>
+            <p class="main-content-description">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+              <br> Aenean commodo ligula eget dolor.<br> Call us at: <b>1-900-MIXALOT</b></p>
           </section>
         </section>
+      </section>
 
-        <section class="hotel-stats-section">
-          <section class="hotel-stats-block column-alignment">
-            <title class="data-title" role="heading"> Data for Today</title>
-            <article class="hotel-stats row-alignment">
-              <u>#Available Rooms:</u>
-              <a id="available-rooms">
-              </a>
-            </article>
-            <article class="hotel-stats row-alignment">
-              <u>Occupancy :</u>
-              <a id="occupancy">
-              </a>
-            </article>
-            <article class="hotel-stats row-alignment">
-              <u>Total Revenue :</u>
-              <a id="revenue">
-              </a>
-            </article>
-            <!-- <section class="color-key column-alignment">
+      <section class="booking-section">
+        <section class="booking-form column-alignment">
+          <h4>GET A ROOM</h4>
+          <article class="booking-input column-alignment">
+            <label for="check-in"><b><u>Check-In:</u></b></label>
+            <input type="date" id="check-in" name="trip-start" value="" min="2018-01-01" max="2025-12-31">
+          </article>
+          <button class="check-availability-button row-alignment" type="button" name="button">Check Availability</button>
+        </section>
+        <section class="delete-booking-form column-alignment hidden">
+          <h4>DELETE BOOKING</h4>
+          <article class="booking-input column-alignment">
+            <!-- <label for="delete-booking"><b><u>Booking ID #</u></b></label> -->
+            <input class="delete-booking-input" id="delete-booking" type="text" placeholder="insert Booking ID#" value="">
+          </article>
+          <button class="delete-booking-button row-alignment" type="button" name="button">Delete</button>
+        </section>
+      </section>
+
+      <section class="user-login-section row-alignment hidden">
+        <section class="user-login-block column-alignment">
+          <label class="user-input" for="user-name">User Name:</label>
+          <input type="text" id="user-name" placeholder="" value="">
+          <label class="user-input" for="password">Password:</label>
+          <input type="text" id="password" placeholder="" value="">
+          <button class="login-button" type="submit">Log In</button>
+        </section>
+      </section>
+
+      <section class="manager-view row-alignment hidden">
+        <section class="manager-block-info row-alignment">
+
+          <section class="manager-data-section">
+            <section class="manager-data-block column-alignment">
+              <section class="manager-data-title">
+                ROOM DETAILS
+              </section>
+              <section class="manager-data row-alignment" role="contentinfo">
+              </section>
+            </section>
+          </section>
+
+          <section class="hotel-stats-section">
+            <section class="hotel-stats-block column-alignment">
+              <title class="data-title" role="heading"> Data for Today</title>
+              <article class="hotel-stats row-alignment">
+                <u>#Available Rooms:</u>
+                <a id="available-rooms">
+                </a>
+              </article>
+              <article class="hotel-stats row-alignment">
+                <u>Occupancy :</u>
+                <a id="occupancy">
+                </a>
+              </article>
+              <article class="hotel-stats row-alignment">
+                <u>Total Revenue :</u>
+                <a id="revenue">
+                </a>
+              </article>
+              <!-- <section class="color-key column-alignment">
               <section class="key-label row-alignment">
                 <a class="available" role="contentinfo" id="green"> o </a>
                 <label for="available"><b>Available</b></label>
@@ -158,21 +158,21 @@
                 <label for="unavailable"><b>Unavailable</b></label>
               </section>
             </section> -->
+            </section>
           </section>
-        </section>
 
-        <section class="manage-bookings-section hidden">
-          <section class="maanger-data-title manage-bookings-title">
+          <section class="manage-bookings-section hidden">
+            <section class="maanger-data-title manage-bookings-title">
+            </section>
+            <form class="manage-bookings-form" role="form" action="index.html" method="post">
+
+            </form>
           </section>
-          <form class="manage-bookings-form" role="form" action="index.html" method="post">
 
-          </form>
         </section>
-
       </section>
-    </section>
 
-  </main>
-</body>
+    </main>
+  </body>
 
-</html>
+  </html>
