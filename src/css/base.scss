@@ -241,6 +241,9 @@ input {
 
 // *************MANAGER VIEW SECTION*****************
 
+.manager-view{
+  justify-content: space-around;
+}
 
 .manager-block-info {
   margin-top: 5em;
@@ -385,6 +388,20 @@ input {
   justify-content: space-around;
   width: 100%;
   flex-wrap: wrap;
+}
+
+.user-grandTotal{
+    padding: 10px;
+    font-size: 3em;
+    width: auto;
+    padding-top: 1em;
+    align-self: center;
+}
+
+.user-booking-info {
+  align-self: center;
+  width: auto;
+  font-size: 2em;
 }
 
 .user-history {
