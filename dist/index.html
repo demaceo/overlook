@@ -12,15 +12,14 @@
     <h2 class="hotel-title manager-motto hidden"> <i>Manager View</i></h2>
   </header>
   <nav class="nav-bar row-alignment">
-    <a class="home-nav-link" href="#">Home</a>
-    <a class="home-nav-link" href="#amenities">Amenities</a>
-    <a class="home-nav-link" href="#contact-us">Contact Us</a>
-    <a class="book-room-link" href="#">Book Room</a>
+    <a href="#">Home</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#contact-us">Contact Us</a>
     <a class="log-in-link" href="#">Log In</a>
   </nav>
 
   <nav class="manager-nav-bar row-alignment hidden">
-    <a href="#" id="room-statuses-nav">Room Details</a>
+    <a href="#" id="room-statuses-nav">Room Statuses</a>
     <a href="#" id="manage-bookings-nav">Manage Bookings</a>
     <a href="#" id="log-out-nav">Log Out</a>
     <section class="nav-search-bar" role="search">
@@ -94,16 +93,10 @@
         <article class="booking-input column-alignment">
           <label for="check-in"><b><u>Check-In:</u></b></label>
           <input type="date" id="check-in" name="trip-start" value="" min="2018-01-01" max="2025-12-31">
+          <label for="check-out"><b><u>Check-Out:</u></b></label>
+          <input type="date" id="check-out" name="trip-end" value="" min="2018-01-01" max="2025-12-31">
         </article>
         <button class="check-availability-button row-alignment" type="button" name="button">Check Availability</button>
-      </section>
-      <section class="delete-booking-form column-alignment hidden">
-        <h4>DELETE BOOKING</h4>
-        <article class="booking-input column-alignment">
-          <!-- <label for="delete-booking"><b><u>Booking ID #</u></b></label> -->
-          <input class="delete-booking-input" id="delete-booking" type="text" placeholder="insert Booking ID#" value="">
-        </article>
-        <button class="delete-booking-button row-alignment" type="button" name="button">Delete</button>
       </section>
     </section>
 
@@ -123,7 +116,7 @@
         <section class="manager-data-section">
           <section class="manager-data-block column-alignment">
             <section class="manager-data-title">
-              ROOM DETAILS
+              Room Statuses
             </section>
             <section class="manager-data row-alignment" role="contentinfo">
             </section>
@@ -134,11 +127,6 @@
           <section class="hotel-stats-block column-alignment">
             <title class="data-title" role="heading"> Data for Today</title>
             <article class="hotel-stats row-alignment">
-              <u>#Available Rooms:</u>
-              <a id="available-rooms">
-              </a>
-            </article>
-            <article class="hotel-stats row-alignment">
               <u>Occupancy :</u>
               <a id="occupancy">
               </a>
@@ -148,7 +136,7 @@
               <a id="revenue">
               </a>
             </article>
-            <!-- <section class="color-key column-alignment">
+            <section class="color-key column-alignment">
               <section class="key-label row-alignment">
                 <a class="available" role="contentinfo" id="green"> o </a>
                 <label for="available"><b>Available</b></label>
@@ -157,7 +145,7 @@
                 <a class="unavailable" role="contentinfo" id="red"> o </a>
                 <label for="unavailable"><b>Unavailable</b></label>
               </section>
-            </section> -->
+            </section>
           </section>
         </section>
 
@@ -173,6 +161,6 @@
     </section>
 
   </main>
-</body>
+<script type="text/javascript" src="main.bundle.js"></script></body>
 
 </html>

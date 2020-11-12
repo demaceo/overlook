@@ -4,6 +4,10 @@ import {
 import User from '../src/classes/userRepo';
 import Booking from '../src/classes/bookingRepo';
 import {
+  fetchData
+} from '../src/classes/fetchData';
+
+import {
   userMockData,
   bookingMockData,
   roomMockData
@@ -38,7 +42,7 @@ describe('User class properties and methods', function() {
     expect(user1.id).to.equal(20);
   });
 
-  it.skip('should have a default name Manager if none is provided', function() {
+  it('should have a default name Manager if none is provided', function() {
     expect(user3.name).to.equal('Manager');
   });
 
@@ -51,33 +55,31 @@ describe('User class properties and methods', function() {
     expect(user1.viewMyBookings(bookingData)[3].date).to.equal('2021/04/21');
   });
 
-  it.skip('should return total spent on all room bookings', function() {
+  it('should return total spent on all room bookings', function() {
     // console.log(user1.viewMyTotal(bookingData, roomData));
-    expect(user1.viewMyTotal(bookingData, roomData)).to.equal();
+    expect(user1.viewMyTotal(bookingData, roomData)).to.equal(923.55);
   });
 
-  it.skip('should be able to find unavailable rooms by date', function() {
-    // user2 = new User(userMockData[1]);
-    expect(user1.viewUnavailableRooms(bookingData, roomData, "2021/02/06").length).to.equal(2); //utilize user3
-    expect(user2.viewUnavailableRooms(bookingData, roomData, "2021/02/06")[0]).to.deep.equal(roomMockData[3]); //utilize user3
+  it('should be able to find unavailable rooms by date', function() {
+    user1 = new User(userMockData[1]);
+    expect(user1.viewUnavailableRooms(bookingData, roomData, "2021/02/06").length).to.equal(2);
   });
 
   it('should be able to find available rooms by date', function() {
-    console.log(user1.viewAvailableRooms(bookingData, roomData, "2021/02/06"));
-    expect(user1.viewAvailableRooms(bookingData, roomData, "2021/02/06").length).to.equal(3);
-    // expect(user1.viewAvailableRooms(bookingData, roomData, "2021/02/06")[0]).to.deep.equal(roomMockData[1]);
+    let x = user1.viewAvailableRooms(bookingData, roomData, "2021/02/06").length;
+    expect(x).to.equal(2);
+    expect(user1.viewAvailableRooms(bookingData, roomData, "2021/02/06")[0]).to.deep.equal(roomMockData[1]);
   });
 
   it('should be able to filter available rooms by type of room', function() {
-    expect(user1.viewAvailableRoomsByType(bookingData, roomData, "2021/02/06", 'junior suite')[0].roomType).to.equal('junior suite');
-    expect(user1.viewAvailableRoomsByType(bookingData, roomData, "2021/02/06", 'junior suite').length).to.equal(1);
+    let x = user1.viewAvailableRoomsByType(bookingData, roomData, "2021/02/06", 'junior suite')[0].roomType;
+    let z = user1.viewAvailableRoomsByType(bookingData, roomData, "2021/02/06", 'junior suite').length;
+    expect(x).to.equal('junior suite');
+    expect(z).to.equal(1);
   });
 
-  it.only('should be able to book a room', function() {
-    user1.bookMyRoom("2020/02/04", 1) //utilize user3
-    user1.bookMyRoom("2020/02/05", 2) //utilize user3
-    expect(user1.bookMyRoom("2020/02/03", 1)).to.be.an.instanceof(Booking);
-    expect(user1.bookMyRoom("2020/02/03", 1).userID).to.equal(20);
+  it('should be able to book a room', function() {
+    user1.bookMyRoom("2020/02/03", 1);
+    expect(fetchData.createBooking).to.have.been.called(1);
   });
-
 });
