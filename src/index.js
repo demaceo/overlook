@@ -19,7 +19,9 @@ import {
   deleteBookingSection,
   deleteBookingInput,
   managerMotto,
+  aboutUs,
   managerNavBar,
+  mainContent,
   managerView,
   managerDataBlock,
   managerDataTitle,
@@ -76,6 +78,36 @@ deleteBookingBttn.addEventListener('click', deleteBooking);
 bookRoomNavLink.addEventListener('click', displayUserBookRoom);
 
 
+
+function getDate() {
+  let newDate = new Date();
+  let month = newDate.getMonth() + 1;
+  let date = newDate.getDate();
+  if (date.toString().length < 2) {
+    date = '0' + date
+  }
+  if (month.toString().length < 2) {
+    month = '0' + month
+  }
+  return `${newDate.getFullYear()}/${month}/${date}`
+}
+
+function collectData() {
+  fetchData.getBookingData().then(data => {
+    return data.forEach(bookingLog => {
+      Promise.resolve(data)
+        .then(data => bookingData.push(bookingLog))
+    })
+  });
+  fetchData.getRoomData().then(data => {
+    return data.forEach(room => {
+      Promise.resolve(data)
+        .then(data => roomData.push(room))
+    })
+  });
+}
+
+
 // -*-~-*-~-*- LOG IN Functions: -*-~-*-~-*-
 function displayLogIn() {
   event.preventDefault();
@@ -97,19 +129,27 @@ function displayUserError() {
 
 function displayUserName() {
   hotelMotto.innerText = `Welcome ${guest['name']}`;
+  guest = new User(guest);
+  collectUserHistory(guest)
 }
 
 function matchGuestLogIn(guestName) {
   fetchData.getUserData().then(data => {
-      return data.find(user => {
-        let clonedInput = `customer${user.id}`;
-        if (guestName === clonedInput) {
-          Promise.resolve(user)
-            .then(user => guest = new User(user))
-        }
-      })
+    return data.find(user => {
+      let clonedInput = `customer${user.id}`;
+      if (guestName === clonedInput) {
+        Promise.resolve(user)
+          .then(user => guest = new User(user))
+      }
     })
-    .then(data => displayUserName());
+  })
+  .then(data => displayUserName());
+}
+
+function displayUserData() {
+  mainSection.classList.add('hidden');
+  managerView.classList.remove('hidden');
+  // gatherSearchResults(guest['name']);
 }
 
 function determineUserInput() {
@@ -118,6 +158,7 @@ function determineUserInput() {
     matchGuestLogIn(guestName);
     displayGuestPage();
     logInNavLink.innerText = "Log Out"
+    displayUserData();
   } else if (userNameInput.value === "manager" && passwordInput.value === "overlook2020") {
     displayManagerPage();
   } else {
@@ -147,34 +188,6 @@ function populateRoomData() {
 `)
   }));
   calculateTodaysStats();
-}
-
-function getDate() {
-  let newDate = new Date();
-  let month = newDate.getMonth() + 1;
-  let date = newDate.getDate();
-  if (date.toString().length < 2) {
-    date = '0' + date
-  }
-  if (month.toString().length < 2) {
-    month = '0' + month
-  }
-  return `${newDate.getFullYear()}/${month}/${date}`
-}
-
-function collectData() {
-  fetchData.getBookingData().then(data => {
-    return data.forEach(bookingLog => {
-      Promise.resolve(data)
-        .then(data => bookingData.push(bookingLog))
-    })
-  });
-  fetchData.getRoomData().then(data => {
-    return data.forEach(room => {
-      Promise.resolve(data)
-        .then(data => roomData.push(room))
-    })
-  });
 }
 
 function calculateTodaysStats() {
@@ -267,9 +280,6 @@ function registerClickEvent(searchResults) {
   })
 }
 
-// -*-~-*-~-*- BOOKINGS SECTION Functions: -*-~-*-~-*-
-
-
 // -*-~-*-~-*- DISPLAY (x)MANAGER SECTION Functions: -*-~-*-~-*-
 
 function clearManagerData() {
@@ -321,7 +331,8 @@ function displayGuestPage() {
   navBar.classList.remove('hidden');
   mainSection.classList.remove('hidden');
   bookingSection.classList.remove('hidden');
-  managerView.classList.add('hidden')
+  managerView.classList.add('hidden');
+  // collectUserHistory(guest)
 }
 
 function hideGuestPage() {
@@ -353,7 +364,8 @@ function bookRoom(roomNumber) {
       userID: chosenUser.id,
       date: selectDate,
       roomNumber: roomNumber
-    })
+    });
+    managerDataTitle.innerText = `${chosenUser.name} booked Room #${roomNumber} for ${selectDate}!`;
   }
 }
 
@@ -382,16 +394,11 @@ function displayAvailableRooms(date) {
 
 function checkAvailableRooms() {
   // if (logOutNavLink.innerText === "Log Out" || logInNavLink.innerText === "Log Out") {
-    mainSection.classList.add('hidden');
-    managerView.classList.remove('hidden');
-    hotelStatsSection.classList.add('hidden');
-    selectDate = checkInDate.value.replaceAll('-', '/');
-    if (selectDate >= today) {
-      displayAvailableRooms(selectDate)
-    // }
+  mainSection.classList.add('hidden');
+  managerView.classList.remove('hidden');
+  hotelStatsSection.classList.add('hidden');
+  selectDate = checkInDate.value.replaceAll('-', '/');
+  if (selectDate >= today) {
+    displayAvailableRooms(selectDate)
   }
 }
-
-// function handleAvailableRoomsSection() {
-//   checkAvailableRooms();
-// }
