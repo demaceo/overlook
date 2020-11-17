@@ -119,13 +119,21 @@ function collectData() {
   });
 }
 
-
 // -*-~-*-~-*- LOG IN Functions: -*-~-*-~-*-
+
+function clearInstatiatedClasses() {
+  let currentUser = "";
+  let clickedUser = "";
+  let guest = "";
+  let booking = "";
+}
+
 function displayLogIn() {
   event.preventDefault();
   hideGuestPage();
   hideManagerPage();
   clearUserLogIn();
+  clearInstatiatedClasses();
   userLoginSection.classList.remove('hidden');
   hotelMotto.innerText = "";
   hotelMotto.classList.add('hidden');
@@ -362,10 +370,18 @@ function displayUserBookRoom() {
 }
 
 // -*-~-*-~-*- BOOK A ROOM Functions: -*-~-*-~-*-
+function confirmBooking(roomNumber) {
+  if (confirm(`Would you like to book Room #${roomNumber} for ${selectDate}?`)) {
+    bookRoom(roomNumber);
+  } else {
+    roomNumber = "";
+  }
+}
+
 function registerClickedRoom() {
   let roomNumber = event.target.id;
   let matchedRoom = roomData.find(room => room.number === roomNumber);
-  bookRoom(roomNumber)
+  confirmBooking(roomNumber)
 }
 
 
