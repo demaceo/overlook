@@ -381,7 +381,9 @@ function confirmBooking(roomNumber) {
 function registerClickedRoom() {
   let roomNumber = event.target.id;
   let matchedRoom = roomData.find(room => room.number === roomNumber);
-  confirmBooking(roomNumber)
+  if (clickedUser === true || guest === true) {
+    confirmBooking(roomNumber)
+  }
 }
 
 
