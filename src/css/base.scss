@@ -23,9 +23,7 @@ body {
   height: 100vh;
   width: 100vw;
 }
-
 // *************HEADER SECTION*****************
-
 header {
   justify-content: center;
   align-content: baseline;
@@ -33,7 +31,7 @@ header {
   width: 100vw;
   height: 30vh;
   align-items: center;
-  padding: 40px 0px;
+  padding: 40px 0;
 }
 
 .hotel-title {
@@ -72,15 +70,12 @@ main {
   justify-content: space-around;
 }
 
-
 article {
   padding: 10px;
   font-size: 2em;
   width: 10vw;
 }
-
 // *************HOME PAGE SECTION*****************
-
 h3 {
   align-self: center;
   font-size: 5em;
@@ -165,7 +160,8 @@ h3 {
   margin-right: 80px;
 }
 
-.booking-form, .delete-booking-form{
+.booking-form,
+.delete-booking-form {
   border-radius: 15%;
   border: solid 10px;
   border-color: teal;
@@ -193,19 +189,17 @@ label {
   padding-top: 10px;
 }
 
-input,
-label {
-  margin: 0.4rem 0;
-}
+// input,
+// label {
+//   margin: 0.4rem 0;
+// }
 
-.check-availability-button, .delete-booking-button {
+.check-availability-button,
+.delete-booking-button {
   padding: 12px;
   border-width: medium;
 }
-
-
 // *************USER LOG IN SECTION*****************
-
 .user-login-section {
   display: flex;
   background-color: orange;
@@ -237,11 +231,8 @@ input {
   padding: 10px;
   border-width: medium;
 }
-
-
 // *************MANAGER VIEW SECTION*****************
-
-.manager-view{
+.manager-view {
   justify-content: space-around;
 }
 
@@ -251,7 +242,7 @@ input {
 
 .manager-data-block {
   width: 80%;
-  min-width:50em;
+  min-width: 50em;
   height: 70vh;
   overflow: scroll;
   align-items: center;
@@ -304,9 +295,7 @@ input {
 .room-cost {
   font-size: 0.7em;
 }
-
 // *************HOTEL DATA VIEW SECTION*****************
-
 .hotel-stats-section {
   margin-top: 1em;
   max-margin-left: 2em;
@@ -328,6 +317,9 @@ input {
 .hotel-stats {
   font-size: 0.9em;
   border: 3px solid;
+  border-radius: 50%;
+  height: 6em;
+  align-items: center;
   background-color: white;
   justify-content: space-around;
 }
@@ -357,7 +349,7 @@ input {
 // *************NAV BAR SECTION*****************
 
 .manager-nav-bar {
-  justify-content: space-around
+  justify-content: space-around;
 }
 
 .nav-search-bar {
@@ -375,27 +367,26 @@ input {
   background-size: 1.6em;
   background-position-y: center;
   top: 0;
-  transition: width .9s;
-  font-size: .8em;
+  transition: width 0.9s;
+  font-size: 0.8em;
 }
+
 .search-input:hover {
   width: 35vw;
 }
-
 // *************CUSTOMER HISTORY VIEW SECTION*****************
-
 .customer-history-block {
   justify-content: space-around;
   width: 100%;
   flex-wrap: wrap;
 }
 
-.user-grandTotal{
-    padding: 10px;
-    font-size: 3em;
-    width: auto;
-    padding-top: 1em;
-    align-self: center;
+.user-grandTotal {
+  padding: 10px;
+  font-size: 3em;
+  width: auto;
+  padding-top: 1em;
+  align-self: center;
 }
 
 .user-booking-info {
@@ -417,8 +408,6 @@ input {
   align-items: center;
   transition: all 0.2s ease-in-out;
 }
-
-
 // *************MANAGE BOOKING VIEW SECTION*****************
 .hidden {
   display: none;
