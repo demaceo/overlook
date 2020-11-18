@@ -98,10 +98,11 @@ h3 {
 .main-content {
   overflow: hidden;
   justify-content: space-around;
-  margin-bottom: 5vh;
+  margin-bottom: 5em;
   margin-left: 2vw;
   height: 100%;
   padding: 5vh;
+  // padding: 5em;
 }
 
 .main-content-block {
@@ -112,12 +113,13 @@ h3 {
   background-color: white;
   max-width: 23vw;
   padding: 50px;
+  margin-bottom: 2em;
 }
 
 .main-content-title {
   border-radius: 6px;
   font-size: 2.5em;
-  padding: 0 1vw;
+  padding: 0vw 1vw;
   font-weight: bolder;
   transition: background-color 0.2s ease-in, color ease-in 0.2s;
 }
@@ -152,6 +154,10 @@ h3 {
   padding: 2vh 0;
   margin: 0;
   font-weight: lighter;
+}
+
+.content-title-title{
+  margin-top: 0em;
 }
 // *************BOOKING A ROOM SECTION*****************
 
