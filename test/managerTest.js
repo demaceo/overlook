@@ -81,7 +81,8 @@ describe.only('Manager class properties and methods', function() {
     expect(fetchData.deleteBooking()).to.have.been.called.with({
       "id": 'randomID3'
     });
-  });  //recently relocated the getDate method (from the manager class to index.js) that these last two tests are referencing
+  });  
+  //recently relocated the getDate method (from the manager class to index.js) that these last two tests are referencing
 
   it.skip('should not be able to delete a booking in the past or today', function() {
     manager.deleteCustomerBooking(bookingData, "randomID1")
